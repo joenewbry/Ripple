@@ -25,6 +25,8 @@
 		D8DDCDFB18E0C58500648536 /* RIPSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCDFA18E0C58500648536 /* RIPSettingsViewController.m */; };
 		D8DDCE0318E1230900648536 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE0218E1230900648536 /* plus@2x.png */; };
 		D8DDCE0518E1393900648536 /* cog.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE0418E1393900648536 /* cog.png */; };
+		D8DDCE0818E13B3500648536 /* RIPInviteContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE0718E13B3500648536 /* RIPInviteContactsViewController.m */; };
+		D8DDCE0A18E1410100648536 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DDCE0918E1410100648536 /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,9 @@
 		D8DDCDFA18E0C58500648536 /* RIPSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPSettingsViewController.m; sourceTree = "<group>"; };
 		D8DDCE0218E1230900648536 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		D8DDCE0418E1393900648536 /* cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cog.png; sourceTree = "<group>"; };
+		D8DDCE0618E13B3400648536 /* RIPInviteContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPInviteContactsViewController.h; sourceTree = "<group>"; };
+		D8DDCE0718E13B3500648536 /* RIPInviteContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPInviteContactsViewController.m; sourceTree = "<group>"; };
+		D8DDCE0918E1410100648536 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DDCE0A18E1410100648536 /* AddressBook.framework in Frameworks */,
 				D81B512C18DE69BF00E73E6C /* CoreGraphics.framework in Frameworks */,
 				D81B512E18DE69BF00E73E6C /* UIKit.framework in Frameworks */,
 				D81B512A18DE69BF00E73E6C /* Foundation.framework in Frameworks */,
@@ -114,6 +120,7 @@
 		D81B512818DE69BF00E73E6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8DDCE0918E1410100648536 /* AddressBook.framework */,
 				D81B512918DE69BF00E73E6C /* Foundation.framework */,
 				D81B512B18DE69BF00E73E6C /* CoreGraphics.framework */,
 				D81B512D18DE69BF00E73E6C /* UIKit.framework */,
@@ -169,6 +176,8 @@
 		D8DDCDF318E0A2C000648536 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D8DDCE0618E13B3400648536 /* RIPInviteContactsViewController.h */,
+				D8DDCE0718E13B3500648536 /* RIPInviteContactsViewController.m */,
 				D8DDCDED18E0A2AA00648536 /* RIPGroupChatViewController.h */,
 				D8DDCDEE18E0A2AA00648536 /* RIPGroupChatViewController.m */,
 				D8DDCDF918E0C58500648536 /* RIPSettingsViewController.h */,
@@ -316,6 +325,7 @@
 				D81B513A18DE69BF00E73E6C /* RIPAppDelegate.m in Sources */,
 				D81B513618DE69BF00E73E6C /* main.m in Sources */,
 				D8DDCDFB18E0C58500648536 /* RIPSettingsViewController.m in Sources */,
+				D8DDCE0818E13B3500648536 /* RIPInviteContactsViewController.m in Sources */,
 				D8DDCDEF18E0A2AA00648536 /* RIPGroupChatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

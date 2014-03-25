@@ -10,6 +10,7 @@
 #import "RIPSettingsViewController.h"
 #import <SwipeView/SwipeView.h>
 #import <JSMessage.h>
+#import "RIPInviteContactsViewController.h"
 
 @interface RIPGroupChatViewController () <SwipeViewDataSource, SwipeViewDelegate, JSMessagesViewDataSource, JSMessagesViewDelegate>
 
@@ -26,7 +27,7 @@
         peopleAround.itemsPerPage = 5;
         peopleAround.truncateFinalPage = false;
         [peopleAround setAlignment:SwipeViewAlignmentEdge];
-        peopleAround.pagingEnabled = true;
+        peopleAround.pagingEnabled = false;
         peopleAround.wrapEnabled = false;
         peopleAround.bounces = true;
         peopleAround.dataSource = self;
@@ -46,9 +47,9 @@
     // Do any additional setup after loading the view.
 
     // setup chat
-
     [[JSBubbleView appearance] setFont:[UIFont fontWithName:@"Avenir-medium" size:16]];
     self.messageInputView.textView.placeHolder = @"Send Message Nearby Ripplers";
+    self.messageInputView.backgroundColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0];
 
     [self setTitle:@"Ripple"];
     self.sender = @"Joe Newbry";
@@ -56,6 +57,8 @@
     UIBarButtonItem *settingsItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(didPressSettings:)];
 
     self.navigationItem.rightBarButtonItem = settingsItem;
+
+    [self setBackgroundColor:[UIColor whiteColor]];
 }
 
 #pragma mark - chat data source : REQUIRED
@@ -165,6 +168,7 @@
     personButton.layer.cornerRadius = 25;
     personButton.layer.borderWidth = 1;
     [personButton.layer setBorderColor:[UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0].CGColor];
+    personButton.backgroundColor = [UIColor whiteColor];
     [personButton addTarget:self action:@selector(didSelectPerson:) forControlEvents:UIControlEventTouchUpInside];
 
     UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
@@ -181,8 +185,10 @@
         NSLog(@"Selected index for button is %ld", (long)selectedButton.tag);
 
         if (selectedButton.tag == 0) {
-
-            //self.navigationController pushViewController:<#(UIViewController *)#> animated:<#(BOOL)#>
+            RIPInviteContactsViewController *inviteVC = [[RIPInviteContactsViewController alloc] init];
+            [self.navigationController pushViewController:inviteVC animated:YES];
+        } else {
+            NSLog(@"Selecting users does nothing at this point");
         }
     }
 
