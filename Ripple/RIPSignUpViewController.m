@@ -64,8 +64,6 @@
     // transition to navigation controller with chat view as root
     RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
-    [navController.navigationBar setTintColor:[UIColor whiteColor]];
-    [navController.navigationBar setTranslucent:NO];
     
     [self presentViewController:navController animated:NO completion:NULL];
 }

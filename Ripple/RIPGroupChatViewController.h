@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JSMessagesViewController/JSMessagesViewController.h>
 
-@interface RIPGroupChatViewController : UIViewController
+@interface RIPGroupChatViewController : JSMessagesViewController
 
 @end

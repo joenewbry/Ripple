@@ -20,19 +20,10 @@
     [Parse setApplicationId:@"zDKQTO7Woa8CxWyvJIJ3kqCWJiBNQLVevHd4NND1"
                   clientKey:@"kbjzFOHawHbdT30LefPfaNMn7oR9MCmsHqUaEXRA"];
 
-    // configure navigation controller colors
+    // configure navigation bar left and right items
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:59.0/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0]];
-    [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
 
-    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
-
-    [[UIWindow appearance] setTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-
-    [[UIView appearance] setTintColor:[UIColor whiteColor]];
-
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     // Customize the title text for *all* UINavigationBars
     [[UINavigationBar appearance] setTitleTextAttributes:
@@ -51,8 +42,10 @@
 
     // set root view controller depending on if a user is logged in
     [PFUser logOut];
-    if ([PFUser currentUser]) {
-        self.window.rootViewController = [RIPGroupChatViewController new];
+    if (true) {
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[RIPGroupChatViewController new]];
+
+        self.window.rootViewController = navController;
     } else {
         self.window.rootViewController = [RIPSignUpViewController new];
     }

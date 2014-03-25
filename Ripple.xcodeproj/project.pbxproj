@@ -23,7 +23,8 @@
 		D8DDCDEF18E0A2AA00648536 /* RIPGroupChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCDEE18E0A2AA00648536 /* RIPGroupChatViewController.m */; };
 		D8DDCDF218E0A2B500648536 /* RIPSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCDF118E0A2B500648536 /* RIPSignUpViewController.m */; };
 		D8DDCDFB18E0C58500648536 /* RIPSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCDFA18E0C58500648536 /* RIPSettingsViewController.m */; };
-		D8DDCDFD18E0C95800648536 /* cog.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCDFC18E0C95800648536 /* cog.png */; };
+		D8DDCE0318E1230900648536 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE0218E1230900648536 /* plus@2x.png */; };
+		D8DDCE0518E1393900648536 /* cog.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE0418E1393900648536 /* cog.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +62,8 @@
 		D8DDCDF118E0A2B500648536 /* RIPSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPSignUpViewController.m; sourceTree = "<group>"; };
 		D8DDCDF918E0C58500648536 /* RIPSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPSettingsViewController.h; sourceTree = "<group>"; };
 		D8DDCDFA18E0C58500648536 /* RIPSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPSettingsViewController.m; sourceTree = "<group>"; };
-		D8DDCDFC18E0C95800648536 /* cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cog.png; sourceTree = "<group>"; };
+		D8DDCE0218E1230900648536 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
+		D8DDCE0418E1393900648536 /* cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cog.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +130,8 @@
 				D81B513918DE69BF00E73E6C /* RIPAppDelegate.m */,
 				D8DDCDF318E0A2C000648536 /* Controllers */,
 				D81B513B18DE69BF00E73E6C /* Images.xcassets */,
-				D8DDCDFC18E0C95800648536 /* cog.png */,
+				D8DDCE0418E1393900648536 /* cog.png */,
+				D8DDCE0218E1230900648536 /* plus@2x.png */,
 				D81B513018DE69BF00E73E6C /* Supporting Files */,
 			);
 			path = Ripple;
@@ -254,9 +257,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DDCDFD18E0C95800648536 /* cog.png in Resources */,
 				D81B513418DE69BF00E73E6C /* InfoPlist.strings in Resources */,
 				D81B513C18DE69BF00E73E6C /* Images.xcassets in Resources */,
+				D8DDCE0318E1230900648536 /* plus@2x.png in Resources */,
+				D8DDCE0518E1393900648536 /* cog.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
