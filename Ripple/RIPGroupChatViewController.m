@@ -10,7 +10,12 @@
 #import "RIPSettingsViewController.h"
 #import <SwipeView/SwipeView.h>
 #import <JSMessage.h>
-#import "RIPInviteContactsViewController.h"
+#import "RIPInviteContactsTableViewController.h"
+#import "SBUser.h"
+#import "SBUserBroadcast.h"
+
+#import <Parse/Parse.h>
+#import "RIPPeopleAroundData.h"
 
 @interface RIPGroupChatViewController () <SwipeViewDataSource, SwipeViewDelegate, JSMessagesViewDataSource, JSMessagesViewDelegate>
 
@@ -21,6 +26,7 @@
 - (id)init
 {
     if (self = [super init]){
+
         // display people around you
         SwipeView *peopleAround = [[SwipeView alloc] initWithFrame:CGRectMake(0 , 64, 320, 60)];
         peopleAround.backgroundColor = [UIColor clearColor];
@@ -30,9 +36,20 @@
         peopleAround.pagingEnabled = false;
         peopleAround.wrapEnabled = false;
         peopleAround.bounces = true;
-        peopleAround.dataSource = self;
+        peopleAround.dataSource = [RIPPeopleAroundData instance];
         peopleAround.delegate = self;
         [self.view addSubview:peopleAround];
+
+        // fire up datasource that looks for nearby people using Social Bluetooth framework
+        [RIPPeopleAroundData instance].delegate = self;
+        [[RIPPeopleAroundData instance] startSearchForNearbyPeople];
+        [RIPPeopleAroundData instance].swipeView = peopleAround;
+
+        // fire up user broadcast using social bluetooth framework
+        // once logged in set information to be broadcasted
+        [SBUser createUserWithObjectId:[PFUser currentUser].objectId];
+        [[SBUserBroadcast currentUserBroadcast] peripheralAddUserProfileService];
+
     }
     return self;
 }
@@ -149,49 +166,21 @@
     return YES;
 }
 
-
-#pragma mark - swipe view data source
-- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
-{
-    return 10;
-
-    // todo create singleton instance with that
-    // responds to count, image, name requests
-}
-
-- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
-{
-    UIButton *personButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
-    personButton.tag = index;
-    [personButton setImage:[UIImage imageNamed:@"plus@2x"] forState:UIControlStateNormal];
-
-    personButton.layer.cornerRadius = 25;
-    personButton.layer.borderWidth = 1;
-    [personButton.layer setBorderColor:[UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0].CGColor];
-    personButton.backgroundColor = [UIColor whiteColor];
-    [personButton addTarget:self action:@selector(didSelectPerson:) forControlEvents:UIControlEventTouchUpInside];
-
-    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-    [containerView addSubview:personButton];
-    return containerView;
-}
-
 #pragma mark - target action
 
-- (void)didSelectPerson:(id)sender
+- (void)didPressPerson:(id)sender
 {
-    if ([sender isKindOfClass:[UIButton class]]) {
-        UIButton *selectedButton = (UIButton *)sender;
-        NSLog(@"Selected index for button is %ld", (long)selectedButton.tag);
+    
+}
 
-        if (selectedButton.tag == 0) {
-            RIPInviteContactsViewController *inviteVC = [[RIPInviteContactsViewController alloc] init];
-            [self.navigationController pushViewController:inviteVC animated:YES];
-        } else {
-            NSLog(@"Selecting users does nothing at this point");
-        }
-    }
+- (void)didPressInvite:(id)sender
+{
+    RIPInviteContactsTableViewController *inviteVC = [[RIPInviteContactsTableViewController alloc] init];
+    [self.navigationController pushViewController:inviteVC animated:YES];
+}
 
+- (void)didPressProfile:(id)sender
+{
 
 }
 

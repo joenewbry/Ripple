@@ -12,9 +12,13 @@
 
 @interface RIPSignUpViewController ()
 
+@property (nonatomic, strong) UIButton *signUpButton;
+
 @end
 
 @implementation RIPSignUpViewController
+
+@synthesize signUpButton;
 
 - (id)init
 {
@@ -22,7 +26,7 @@
         // position button based on view size
         float height = self.view.bounds.size.height;
 
-        UIButton *signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(20, height - 60, 280, 50)];
+        signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(20, height - 60, 280, 50)];
         signUpButton.backgroundColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0];
         [signUpButton.layer setCornerRadius:5.0];
         [signUpButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -59,13 +63,35 @@
 #pragma mark - target action
 - (void)didPressSignUp:(id)sender
 {
-    // log in with facebook
+    // disable button while signing up
+    signUpButton.enabled = false;
 
-    // transition to navigation controller with chat view as root
-    RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
-    
-    [self presentViewController:navController animated:NO completion:NULL];
+    // log in with facebook
+    NSArray *permissionsArray = @[@"user_about_me"];
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        // transition to navigation controller with chat view as root
+        if (!error){
+            FBRequest *request = [FBRequest requestForMe];
+            [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                if (!error){
+                    NSDictionary *userData = (NSDictionary *)result;
+                    [PFUser currentUser].username = userData[@"name"];
+                    NSString *facebookID = userData[@"id"];
+                    NSString *pictureURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
+                    [PFUser currentUser][@"pictureURL"] = pictureURL;
+
+                    RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
+                    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
+
+                    [self presentViewController:navController animated:NO completion:NULL];
+
+                }
+            }];
+
+
+        }
+
+    }];
 }
 
 

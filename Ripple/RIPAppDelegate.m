@@ -19,6 +19,7 @@
     // configure Parse
     [Parse setApplicationId:@"zDKQTO7Woa8CxWyvJIJ3kqCWJiBNQLVevHd4NND1"
                   clientKey:@"kbjzFOHawHbdT30LefPfaNMn7oR9MCmsHqUaEXRA"];
+    [PFFacebookUtils initializeFacebook];
 
     // configure navigation bar left and right items
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0]];
