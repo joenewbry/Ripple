@@ -35,6 +35,26 @@
 		D8DDCE3D18E1FA1600648536 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE3C18E1FA1600648536 /* user.png */; };
 		D8DDCE4018E1FB2D00648536 /* CBUUID+StringExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE3F18E1FB2D00648536 /* CBUUID+StringExtraction.m */; };
 		D8DDCE4318E35B8200648536 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DDCE4218E35B8200648536 /* MessageUI.framework */; };
+		D8DDCE4618E3633100648536 /* RIPSaveImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE4518E3633100648536 /* RIPSaveImage.m */; };
+		D8DDCE4A18E37B3500648536 /* PFFile+UIImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE4918E37B3500648536 /* PFFile+UIImageHelper.m */; };
+		D8DDCE5B18E38C5E00648536 /* AppIcon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE4B18E38C5E00648536 /* AppIcon29x29.png */; };
+		D8DDCE5C18E38C5E00648536 /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE4C18E38C5E00648536 /* AppIcon29x29@2x.png */; };
+		D8DDCE5D18E38C5E00648536 /* AppIcon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE4D18E38C5E00648536 /* AppIcon40x40.png */; };
+		D8DDCE5E18E38C5E00648536 /* AppIcon40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE4E18E38C5E00648536 /* AppIcon40x40@2x.png */; };
+		D8DDCE5F18E38C5E00648536 /* AppIcon50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE4F18E38C5E00648536 /* AppIcon50x50.png */; };
+		D8DDCE6018E38C5E00648536 /* AppIcon50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5018E38C5E00648536 /* AppIcon50x50@2x.png */; };
+		D8DDCE6118E38C5E00648536 /* AppIcon57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5118E38C5E00648536 /* AppIcon57x57.png */; };
+		D8DDCE6218E38C5E00648536 /* AppIcon57x57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5218E38C5E00648536 /* AppIcon57x57@2x.png */; };
+		D8DDCE6318E38C5E00648536 /* AppIcon60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5318E38C5E00648536 /* AppIcon60x60.png */; };
+		D8DDCE6418E38C5E00648536 /* AppIcon60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5418E38C5E00648536 /* AppIcon60x60@2x.png */; };
+		D8DDCE6518E38C5E00648536 /* AppIcon72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5518E38C5E00648536 /* AppIcon72x72.png */; };
+		D8DDCE6618E38C5E00648536 /* AppIcon72x72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5618E38C5E00648536 /* AppIcon72x72@2x.png */; };
+		D8DDCE6718E38C5E00648536 /* AppIcon76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5718E38C5E00648536 /* AppIcon76x76.png */; };
+		D8DDCE6818E38C5E00648536 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5818E38C5E00648536 /* AppIcon76x76@2x.png */; };
+		D8DDCE6918E38C5E00648536 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5918E38C5E00648536 /* iTunesArtwork.png */; };
+		D8DDCE6A18E38C5E00648536 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5A18E38C5E00648536 /* iTunesArtwork@2x.png */; };
+		D8DDCE6D18E38C8200648536 /* RippleLaunchScreen@960.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE6B18E38C8200648536 /* RippleLaunchScreen@960.png */; };
+		D8DDCE6E18E38C8200648536 /* RippleLaunchScreen@1136.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE6C18E38C8200648536 /* RippleLaunchScreen@1136.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +111,28 @@
 		D8DDCE3E18E1FB2D00648536 /* CBUUID+StringExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+StringExtraction.h"; sourceTree = "<group>"; };
 		D8DDCE3F18E1FB2D00648536 /* CBUUID+StringExtraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+StringExtraction.m"; sourceTree = "<group>"; };
 		D8DDCE4218E35B8200648536 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D8DDCE4418E3633100648536 /* RIPSaveImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPSaveImage.h; sourceTree = "<group>"; };
+		D8DDCE4518E3633100648536 /* RIPSaveImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPSaveImage.m; sourceTree = "<group>"; };
+		D8DDCE4818E37B3500648536 /* PFFile+UIImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFFile+UIImageHelper.h"; sourceTree = "<group>"; };
+		D8DDCE4918E37B3500648536 /* PFFile+UIImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFFile+UIImageHelper.m"; sourceTree = "<group>"; };
+		D8DDCE4B18E38C5E00648536 /* AppIcon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon29x29.png; sourceTree = "<group>"; };
+		D8DDCE4C18E38C5E00648536 /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
+		D8DDCE4D18E38C5E00648536 /* AppIcon40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon40x40.png; sourceTree = "<group>"; };
+		D8DDCE4E18E38C5E00648536 /* AppIcon40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@2x.png"; sourceTree = "<group>"; };
+		D8DDCE4F18E38C5E00648536 /* AppIcon50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon50x50.png; sourceTree = "<group>"; };
+		D8DDCE5018E38C5E00648536 /* AppIcon50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon50x50@2x.png"; sourceTree = "<group>"; };
+		D8DDCE5118E38C5E00648536 /* AppIcon57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon57x57.png; sourceTree = "<group>"; };
+		D8DDCE5218E38C5E00648536 /* AppIcon57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon57x57@2x.png"; sourceTree = "<group>"; };
+		D8DDCE5318E38C5E00648536 /* AppIcon60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon60x60.png; sourceTree = "<group>"; };
+		D8DDCE5418E38C5E00648536 /* AppIcon60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@2x.png"; sourceTree = "<group>"; };
+		D8DDCE5518E38C5E00648536 /* AppIcon72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon72x72.png; sourceTree = "<group>"; };
+		D8DDCE5618E38C5E00648536 /* AppIcon72x72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon72x72@2x.png"; sourceTree = "<group>"; };
+		D8DDCE5718E38C5E00648536 /* AppIcon76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon76x76.png; sourceTree = "<group>"; };
+		D8DDCE5818E38C5E00648536 /* AppIcon76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x.png"; sourceTree = "<group>"; };
+		D8DDCE5918E38C5E00648536 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		D8DDCE5A18E38C5E00648536 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		D8DDCE6B18E38C8200648536 /* RippleLaunchScreen@960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RippleLaunchScreen@960.png"; sourceTree = "<group>"; };
+		D8DDCE6C18E38C8200648536 /* RippleLaunchScreen@1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RippleLaunchScreen@1136.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +205,11 @@
 				D8DDCE1818E1E89500648536 /* Models */,
 				D8DDCE1418E1E82700648536 /* Views */,
 				D8DDCDF318E0A2C000648536 /* Controllers */,
+				D8DDCE4718E3633600648536 /* Utilities */,
 				D81B513B18DE69BF00E73E6C /* Images.xcassets */,
+				D8DDCE6B18E38C8200648536 /* RippleLaunchScreen@960.png */,
+				D8DDCE6C18E38C8200648536 /* RippleLaunchScreen@1136.png */,
+				D8DDCE6F18E38C8A00648536 /* AppIcon */,
 				D8DDCE3C18E1FA1600648536 /* user.png */,
 				D8DDCE0418E1393900648536 /* cog.png */,
 				D8DDCE0218E1230900648536 /* plus@2x.png */,
@@ -293,6 +339,40 @@
 			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		D8DDCE4718E3633600648536 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D8DDCE4818E37B3500648536 /* PFFile+UIImageHelper.h */,
+				D8DDCE4918E37B3500648536 /* PFFile+UIImageHelper.m */,
+				D8DDCE4418E3633100648536 /* RIPSaveImage.h */,
+				D8DDCE4518E3633100648536 /* RIPSaveImage.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		D8DDCE6F18E38C8A00648536 /* AppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				D8DDCE4B18E38C5E00648536 /* AppIcon29x29.png */,
+				D8DDCE4C18E38C5E00648536 /* AppIcon29x29@2x.png */,
+				D8DDCE4D18E38C5E00648536 /* AppIcon40x40.png */,
+				D8DDCE4E18E38C5E00648536 /* AppIcon40x40@2x.png */,
+				D8DDCE4F18E38C5E00648536 /* AppIcon50x50.png */,
+				D8DDCE5018E38C5E00648536 /* AppIcon50x50@2x.png */,
+				D8DDCE5118E38C5E00648536 /* AppIcon57x57.png */,
+				D8DDCE5218E38C5E00648536 /* AppIcon57x57@2x.png */,
+				D8DDCE5318E38C5E00648536 /* AppIcon60x60.png */,
+				D8DDCE5418E38C5E00648536 /* AppIcon60x60@2x.png */,
+				D8DDCE5518E38C5E00648536 /* AppIcon72x72.png */,
+				D8DDCE5618E38C5E00648536 /* AppIcon72x72@2x.png */,
+				D8DDCE5718E38C5E00648536 /* AppIcon76x76.png */,
+				D8DDCE5818E38C5E00648536 /* AppIcon76x76@2x.png */,
+				D8DDCE5918E38C5E00648536 /* iTunesArtwork.png */,
+				D8DDCE5A18E38C5E00648536 /* iTunesArtwork@2x.png */,
+			);
+			name = AppIcon;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -371,11 +451,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DDCE5E18E38C5E00648536 /* AppIcon40x40@2x.png in Resources */,
+				D8DDCE6818E38C5E00648536 /* AppIcon76x76@2x.png in Resources */,
+				D8DDCE6118E38C5E00648536 /* AppIcon57x57.png in Resources */,
 				D81B513418DE69BF00E73E6C /* InfoPlist.strings in Resources */,
+				D8DDCE6718E38C5E00648536 /* AppIcon76x76.png in Resources */,
 				D8DDCE3D18E1FA1600648536 /* user.png in Resources */,
 				D81B513C18DE69BF00E73E6C /* Images.xcassets in Resources */,
+				D8DDCE5C18E38C5E00648536 /* AppIcon29x29@2x.png in Resources */,
+				D8DDCE6E18E38C8200648536 /* RippleLaunchScreen@1136.png in Resources */,
+				D8DDCE5F18E38C5E00648536 /* AppIcon50x50.png in Resources */,
+				D8DDCE6518E38C5E00648536 /* AppIcon72x72.png in Resources */,
 				D8DDCE0318E1230900648536 /* plus@2x.png in Resources */,
+				D8DDCE5D18E38C5E00648536 /* AppIcon40x40.png in Resources */,
+				D8DDCE6318E38C5E00648536 /* AppIcon60x60.png in Resources */,
+				D8DDCE6D18E38C8200648536 /* RippleLaunchScreen@960.png in Resources */,
+				D8DDCE6418E38C5E00648536 /* AppIcon60x60@2x.png in Resources */,
+				D8DDCE6618E38C5E00648536 /* AppIcon72x72@2x.png in Resources */,
+				D8DDCE6218E38C5E00648536 /* AppIcon57x57@2x.png in Resources */,
+				D8DDCE6A18E38C5E00648536 /* iTunesArtwork@2x.png in Resources */,
+				D8DDCE6018E38C5E00648536 /* AppIcon50x50@2x.png in Resources */,
 				D8DDCE0518E1393900648536 /* cog.png in Resources */,
+				D8DDCE6918E38C5E00648536 /* iTunesArtwork.png in Resources */,
+				D8DDCE5B18E38C5E00648536 /* AppIcon29x29.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +529,7 @@
 				D8DDCE1718E1E89000648536 /* RIPPeopleAroundData.m in Sources */,
 				D8DDCE0D18E1508900648536 /* RIPInviteContactsTableViewController.m in Sources */,
 				D8DDCE3A18E1ECDC00648536 /* SBUser.m in Sources */,
+				D8DDCE4618E3633100648536 /* RIPSaveImage.m in Sources */,
 				D8DDCE3918E1ECDC00648536 /* SBUserDiscovery.m in Sources */,
 				D8DDCE1B18E1E91100648536 /* RIPPerson.m in Sources */,
 				D81B513A18DE69BF00E73E6C /* RIPAppDelegate.m in Sources */,
@@ -439,6 +538,7 @@
 				D8DDCE4018E1FB2D00648536 /* CBUUID+StringExtraction.m in Sources */,
 				D8DDCDEF18E0A2AA00648536 /* RIPGroupChatViewController.m in Sources */,
 				D8DDCE3718E1ECDC00648536 /* SBUserBroadcast.m in Sources */,
+				D8DDCE4A18E37B3500648536 /* PFFile+UIImageHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

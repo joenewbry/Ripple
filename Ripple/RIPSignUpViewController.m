@@ -9,10 +9,17 @@
 #import "RIPSignUpViewController.h"
 #import <Parse/Parse.h>
 #import "RIPGroupChatViewController.h"
+#import "RIPSaveImage.h"
 
 @interface RIPSignUpViewController ()
 
 @property (nonatomic, strong) UIButton *signUpButton;
+
+// store user profile image from facebook
+@property (nonatomic, strong) NSMutableData *imgData;
+@property (nonatomic, strong) NSURLConnection *URLConnection;
+@property (nonatomic, strong) UIImage *imgRef;
+
 
 @end
 
@@ -80,11 +87,7 @@
                     NSString *pictureURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
                     [PFUser currentUser][@"pictureURL"] = pictureURL;
 
-                    RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
-                    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
-
-                    [self presentViewController:navController animated:NO completion:NULL];
-
+                    [self saveImageInBackground:[NSURL URLWithString:pictureURL]];
                 }
             }];
 
@@ -92,6 +95,48 @@
         }
 
     }];
+}
+
+
+- (void)saveImageInBackground:(NSURL *)url
+{
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2.0f];
+    self.imgData = [NSMutableData new];
+    self.URLConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+}
+
+// Called every time a chunk of the data is received
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.imgData appendData:data]; // Build the image
+}
+
+// Called when the entire image is finished downloading
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+
+    // Set the image in the header imageView
+    PFFile *imageFile = [PFFile fileWithData:self.imgData]; // saves to parse
+
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [PFUser currentUser][@"profileImage"] = imageFile;
+        [[PFUser currentUser] saveEventually];
+    }];
+
+    UIImage *thumbnailImage =[UIImage imageWithData:self.imgData scale:.1];
+    PFFile *thumbnailFile = [PFFile fileWithData:UIImagePNGRepresentation(thumbnailImage)];
+
+    [thumbnailFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [PFUser currentUser][@"thumbnailImage"] = thumbnailFile;
+        [[PFUser currentUser] saveEventually];
+    }];
+
+    [self signIn];
+}
+
+- (void)signIn
+{
+    RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
+    [self presentViewController:navController animated:NO completion:NULL];
 }
 
 

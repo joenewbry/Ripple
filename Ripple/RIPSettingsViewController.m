@@ -50,8 +50,8 @@
 - (void)didPressLogOut:(id)sender
 {
     [PFUser logOut];
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    [[self.navigationController presentedViewController] dismissViewControllerAnimated:NO completion:NULL];
+//    [self.navigationController popToRootViewControllerAnimated:NO];
+//    [[self.navigationController presentedViewController] dismissViewControllerAnimated:NO completion:NULL];
 
     RIPSignUpViewController *signUpVC = [[RIPSignUpViewController alloc] init];
     RIPAppDelegate *app = [[UIApplication sharedApplication] delegate];

@@ -9,6 +9,8 @@
 #import "RIPPeopleAroundData.h"
 #import <Parse/Parse.h>
 #import "SBUserDiscovery.h"
+#import "RIPSaveImage.h"
+#import "PFFile+UIImageHelper.h"
 
 @interface RIPPeopleAroundData () <SBUserDiscoveryDelegate>
 
@@ -49,7 +51,7 @@ static RIPPeopleAroundData *instance = nil;
 #pragma mark - swipe view data source
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
-    return [self.peopleAround count] + 2;
+    return [self.peopleAround count] + 1;
 
     // todo create singleton instance with that
     // responds to count, image, name requests
@@ -62,18 +64,23 @@ static RIPPeopleAroundData *instance = nil;
     personButton.clipsToBounds = true;
 
     // todo add protocol to get rid of warning messages
+//    if (index == 0) {
+//        [personButton setImage:[UIImage imageNamed:@"plus@2x"] forState:UIControlStateNormal];
+//        [personButton addTarget:self.delegate action:@selector(didPressInvite:) forControlEvents:UIControlEventTouchUpInside];
+//    }
     if (index == 0) {
-        [personButton setImage:[UIImage imageNamed:@"plus@2x"] forState:UIControlStateNormal];
-        [personButton addTarget:self.delegate action:@selector(didPressInvite:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    else if (index == 1) {
-        [personButton setImage:[UIImage imageNamed:@"user"] forState:UIControlStateNormal];
-        // TODO: fectch real profile image and save as PFFile to parse
+
+        PFFile *profileImage = [PFUser currentUser][@"thumbnailImage"];
+        NSData *imgData = [profileImage getData];
+
+        //[profileImage imageFromFileWithPlaceholderImage:[UIImage imageNamed:@"user"]];
+        [personButton setImage:[UIImage imageWithData:imgData] forState:UIControlStateNormal];
+
         [personButton addTarget:self.delegate action:@selector(didPressProfile:) forControlEvents:UIControlEventTouchUpInside];
 
     } else
     {
-        [personButton setImage:[UIImage imageNamed:@"user"] forState:UIControlStateNormal];
+        [personButton setImage:[self.peopleAround objectAtIndex:index-1] forState:UIControlStateNormal];
         [personButton addTarget:self.delegate action:@selector(didPressPerson:) forControlEvents:UIControlEventTouchUpInside];
     }
 
@@ -96,10 +103,15 @@ static RIPPeopleAroundData *instance = nil;
         PFQuery *queryForUser = [PFQuery queryWithClassName:@"_User"];
         [queryForUser whereKey:@"objectId" equalTo:objectId];
         [queryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            [self.peopleAround addObject:objects[0]];
-            // adjust for 2 additional slots, invite, and your profile, and count overstepping index by 1
-            // +2 -1 = 1
-            [self.swipeView reloadItemAtIndex:[self.peopleAround count] + 1];
+            PFUser *discoveredUser = objects[0];
+            PFFile *thumbnailFile = discoveredUser[@"thumbnailImage"];
+            [thumbnailFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                [self.peopleAround addObject:[UIImage imageWithData:data]];
+                // adjust for 1 additional slot, your profile, and count overstepping index by 1
+                // +1 -1 = 0
+                [self.swipeView reloadItemAtIndex:[self.peopleAround count]];
+            }];
+
         }];
     }
 }
