@@ -71,21 +71,28 @@
 - (void)didPressSignUp:(id)sender
 {
     // disable button while signing up
-    signUpButton.enabled = false;
+    signUpButton.enabled = true;
 
     // log in with facebook
     NSArray *permissionsArray = @[@"user_about_me"];
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         // transition to navigation controller with chat view as root
+        if (error) NSLog(@"There's an error: %@", [error description]);
         if (!error){
             FBRequest *request = [FBRequest requestForMe];
             [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                 if (!error){
                     NSDictionary *userData = (NSDictionary *)result;
                     [PFUser currentUser].username = userData[@"name"];
+                    [PFUser currentUser][@"birthday"] = userData[@"birthday"];
+                    [PFUser currentUser][@"college"] = [self getCollegeStringFromEducation:userData[@"education"]];
+                    [PFUser currentUser][@"relationshipStatus"] = userData[@"relationship_status"];
+
                     NSString *facebookID = userData[@"id"];
                     NSString *pictureURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
                     [PFUser currentUser][@"pictureURL"] = pictureURL;
+
+                    [[PFUser currentUser] saveInBackground];
 
                     [self saveImageInBackground:[NSURL URLWithString:pictureURL]];
                 }
@@ -95,6 +102,8 @@
         }
 
     }];
+
+    // we've made it this far so we should just go to home page, user is already good to g
 }
 
 
@@ -137,6 +146,16 @@
     RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
     [self presentViewController:navController animated:NO completion:NULL];
+}
+
+- (NSString *)getCollegeStringFromEducation:(FBGraphObject *)fBGraphObject
+{
+    for (NSDictionary *school in fBGraphObject) {
+        if ([school[@"type"] isEqualToString:@"College"]){
+            return school[@"school"][@"name"];
+        }
+    }
+    return @"No College Found";
 }
 
 

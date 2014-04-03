@@ -43,7 +43,7 @@
 
     // set root view controller depending on if a user is logged in
     [PFUser logOut];
-    if (false) {
+    if ([PFUser currentUser]) {
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[RIPGroupChatViewController new]];
 
         self.window.rootViewController = navController;

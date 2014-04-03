@@ -16,6 +16,7 @@
 
 #import <Parse/Parse.h>
 #import "RIPPeopleAroundData.h"
+#import "RIPProfileViewController.h"
 
 @interface RIPGroupChatViewController () <SwipeViewDataSource, SwipeViewDelegate, JSMessagesViewDataSource, JSMessagesViewDelegate>
 
@@ -181,13 +182,14 @@
 
 - (void)didPressProfile:(id)sender
 {
-
+    RIPProfileViewController *myProfileVC = [[RIPProfileViewController alloc] init];
+    [self.navigationController pushViewController:myProfileVC animated:NO];
 }
 
 - (void)didPressSettings:(id)sender
 {
     RIPSettingsViewController *settingsVC = [[RIPSettingsViewController alloc] init];
-    [self.navigationController pushViewController:settingsVC animated:YES];
+    [self.navigationController pushViewController:settingsVC animated:NO];
 }
 
 @end

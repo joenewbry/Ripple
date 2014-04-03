@@ -55,6 +55,8 @@
 		D8DDCE6A18E38C5E00648536 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE5A18E38C5E00648536 /* iTunesArtwork@2x.png */; };
 		D8DDCE6D18E38C8200648536 /* RippleLaunchScreen@960.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE6B18E38C8200648536 /* RippleLaunchScreen@960.png */; };
 		D8DDCE6E18E38C8200648536 /* RippleLaunchScreen@1136.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE6C18E38C8200648536 /* RippleLaunchScreen@1136.png */; };
+		D8EEB98518ECA9D700EA0E45 /* RIPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EEB98418ECA9D700EA0E45 /* RIPProfileViewController.m */; };
+		D8EEB98818ECBF8100EA0E45 /* RIPChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EEB98718ECBF8100EA0E45 /* RIPChatData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +135,10 @@
 		D8DDCE5A18E38C5E00648536 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		D8DDCE6B18E38C8200648536 /* RippleLaunchScreen@960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RippleLaunchScreen@960.png"; sourceTree = "<group>"; };
 		D8DDCE6C18E38C8200648536 /* RippleLaunchScreen@1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RippleLaunchScreen@1136.png"; sourceTree = "<group>"; };
+		D8EEB98318ECA9D700EA0E45 /* RIPProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPProfileViewController.h; sourceTree = "<group>"; };
+		D8EEB98418ECA9D700EA0E45 /* RIPProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPProfileViewController.m; sourceTree = "<group>"; };
+		D8EEB98618ECBF8100EA0E45 /* RIPChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPChatData.h; sourceTree = "<group>"; };
+		D8EEB98718ECBF8100EA0E45 /* RIPChatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPChatData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +260,8 @@
 				D8DDCE0C18E1508900648536 /* RIPInviteContactsTableViewController.m */,
 				D8DDCDED18E0A2AA00648536 /* RIPGroupChatViewController.h */,
 				D8DDCDEE18E0A2AA00648536 /* RIPGroupChatViewController.m */,
+				D8EEB98318ECA9D700EA0E45 /* RIPProfileViewController.h */,
+				D8EEB98418ECA9D700EA0E45 /* RIPProfileViewController.m */,
 				D8DDCDF918E0C58500648536 /* RIPSettingsViewController.h */,
 				D8DDCDFA18E0C58500648536 /* RIPSettingsViewController.m */,
 				D8DDCDF018E0A2B500648536 /* RIPSignUpViewController.h */,
@@ -276,6 +284,8 @@
 				D8DDCE1618E1E89000648536 /* RIPPeopleAroundData.m */,
 				D8DDCE1918E1E91100648536 /* RIPPerson.h */,
 				D8DDCE1A18E1E91100648536 /* RIPPerson.m */,
+				D8EEB98618ECBF8100EA0E45 /* RIPChatData.h */,
+				D8EEB98718ECBF8100EA0E45 /* RIPChatData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -528,6 +538,7 @@
 				D8DDCDF218E0A2B500648536 /* RIPSignUpViewController.m in Sources */,
 				D8DDCE1718E1E89000648536 /* RIPPeopleAroundData.m in Sources */,
 				D8DDCE0D18E1508900648536 /* RIPInviteContactsTableViewController.m in Sources */,
+				D8EEB98518ECA9D700EA0E45 /* RIPProfileViewController.m in Sources */,
 				D8DDCE3A18E1ECDC00648536 /* SBUser.m in Sources */,
 				D8DDCE4618E3633100648536 /* RIPSaveImage.m in Sources */,
 				D8DDCE3918E1ECDC00648536 /* SBUserDiscovery.m in Sources */,
@@ -537,6 +548,7 @@
 				D8DDCDFB18E0C58500648536 /* RIPSettingsViewController.m in Sources */,
 				D8DDCE4018E1FB2D00648536 /* CBUUID+StringExtraction.m in Sources */,
 				D8DDCDEF18E0A2AA00648536 /* RIPGroupChatViewController.m in Sources */,
+				D8EEB98818ECBF8100EA0E45 /* RIPChatData.m in Sources */,
 				D8DDCE3718E1ECDC00648536 /* SBUserBroadcast.m in Sources */,
 				D8DDCE4A18E37B3500648536 /* PFFile+UIImageHelper.m in Sources */,
 			);
