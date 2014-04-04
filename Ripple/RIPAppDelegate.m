@@ -48,7 +48,7 @@
 
         self.window.rootViewController = navController;
     } else {
-        self.window.rootViewController = [RIPSignUpViewController new];
+        self.window.rootViewController = [[RIPSignUpViewController alloc] initWithNibName:@"SignUp" bundle:[NSBundle mainBundle]];
     }
 
     [self.window makeKeyAndVisible];

@@ -20,6 +20,7 @@
 		D81B514518DE69BF00E73E6C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B512D18DE69BF00E73E6C /* UIKit.framework */; };
 		D81B514D18DE69BF00E73E6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D81B514B18DE69BF00E73E6C /* InfoPlist.strings */; };
 		D81B514F18DE69BF00E73E6C /* RippleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D81B514E18DE69BF00E73E6C /* RippleTests.m */; };
+		D82F25B618EE687C00AC025C /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82F25B518EE687C00AC025C /* SignUp.xib */; };
 		D8DDCDEF18E0A2AA00648536 /* RIPGroupChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCDEE18E0A2AA00648536 /* RIPGroupChatViewController.m */; };
 		D8DDCDF218E0A2B500648536 /* RIPSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCDF118E0A2B500648536 /* RIPSignUpViewController.m */; };
 		D8DDCDFB18E0C58500648536 /* RIPSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCDFA18E0C58500648536 /* RIPSettingsViewController.m */; };
@@ -57,6 +58,9 @@
 		D8DDCE6E18E38C8200648536 /* RippleLaunchScreen@1136.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DDCE6C18E38C8200648536 /* RippleLaunchScreen@1136.png */; };
 		D8EEB98518ECA9D700EA0E45 /* RIPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EEB98418ECA9D700EA0E45 /* RIPProfileViewController.m */; };
 		D8EEB98818ECBF8100EA0E45 /* RIPChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EEB98718ECBF8100EA0E45 /* RIPChatData.m */; };
+		D8EEB98E18ECFED400EA0E45 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EEB98D18ECFED400EA0E45 /* AssetsLibrary.framework */; };
+		D8EEB99018ECFEDE00EA0E45 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EEB98F18ECFEDE00EA0E45 /* AVFoundation.framework */; };
+		D8EEB99218ED089900EA0E45 /* Profile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8EEB99118ED089900EA0E45 /* Profile.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +92,7 @@
 		D81B514A18DE69BF00E73E6C /* RippleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RippleTests-Info.plist"; sourceTree = "<group>"; };
 		D81B514C18DE69BF00E73E6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D81B514E18DE69BF00E73E6C /* RippleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RippleTests.m; sourceTree = "<group>"; };
+		D82F25B518EE687C00AC025C /* SignUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUp.xib; sourceTree = "<group>"; };
 		D8DDCDED18E0A2AA00648536 /* RIPGroupChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPGroupChatViewController.h; sourceTree = "<group>"; };
 		D8DDCDEE18E0A2AA00648536 /* RIPGroupChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPGroupChatViewController.m; sourceTree = "<group>"; };
 		D8DDCDF018E0A2B500648536 /* RIPSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPSignUpViewController.h; sourceTree = "<group>"; };
@@ -139,6 +144,11 @@
 		D8EEB98418ECA9D700EA0E45 /* RIPProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPProfileViewController.m; sourceTree = "<group>"; };
 		D8EEB98618ECBF8100EA0E45 /* RIPChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPChatData.h; sourceTree = "<group>"; };
 		D8EEB98718ECBF8100EA0E45 /* RIPChatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPChatData.m; sourceTree = "<group>"; };
+		D8EEB98918ECFE7D00EA0E45 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D8EEB98B18ECFEC500EA0E45 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		D8EEB98D18ECFED400EA0E45 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		D8EEB98F18ECFEDE00EA0E45 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D8EEB99118ED089900EA0E45 /* Profile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Profile.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +156,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EEB99018ECFEDE00EA0E45 /* AVFoundation.framework in Frameworks */,
+				D8EEB98E18ECFED400EA0E45 /* AssetsLibrary.framework in Frameworks */,
 				D8DDCE4318E35B8200648536 /* MessageUI.framework in Frameworks */,
 				D8DDCE0A18E1410100648536 /* AddressBook.framework in Frameworks */,
 				D81B512C18DE69BF00E73E6C /* CoreGraphics.framework in Frameworks */,
@@ -191,6 +203,10 @@
 		D81B512818DE69BF00E73E6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8EEB98F18ECFEDE00EA0E45 /* AVFoundation.framework */,
+				D8EEB98D18ECFED400EA0E45 /* AssetsLibrary.framework */,
+				D8EEB98B18ECFEC500EA0E45 /* CoreImage.framework */,
+				D8EEB98918ECFE7D00EA0E45 /* CoreVideo.framework */,
 				D8DDCE4218E35B8200648536 /* MessageUI.framework */,
 				D8DDCE2818E1EC0A00648536 /* SocialBluetooth */,
 				D8DDCE0918E1410100648536 /* AddressBook.framework */,
@@ -273,6 +289,8 @@
 		D8DDCE1418E1E82700648536 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D8EEB99118ED089900EA0E45 /* Profile.xib */,
+				D82F25B518EE687C00AC025C /* SignUp.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -465,6 +483,7 @@
 				D8DDCE6818E38C5E00648536 /* AppIcon76x76@2x.png in Resources */,
 				D8DDCE6118E38C5E00648536 /* AppIcon57x57.png in Resources */,
 				D81B513418DE69BF00E73E6C /* InfoPlist.strings in Resources */,
+				D8EEB99218ED089900EA0E45 /* Profile.xib in Resources */,
 				D8DDCE6718E38C5E00648536 /* AppIcon76x76.png in Resources */,
 				D8DDCE3D18E1FA1600648536 /* user.png in Resources */,
 				D81B513C18DE69BF00E73E6C /* Images.xcassets in Resources */,
@@ -472,6 +491,7 @@
 				D8DDCE6E18E38C8200648536 /* RippleLaunchScreen@1136.png in Resources */,
 				D8DDCE5F18E38C5E00648536 /* AppIcon50x50.png in Resources */,
 				D8DDCE6518E38C5E00648536 /* AppIcon72x72.png in Resources */,
+				D82F25B618EE687C00AC025C /* SignUp.xib in Resources */,
 				D8DDCE0318E1230900648536 /* plus@2x.png in Resources */,
 				D8DDCE5D18E38C5E00648536 /* AppIcon40x40.png in Resources */,
 				D8DDCE6318E38C5E00648536 /* AppIcon60x60.png in Resources */,

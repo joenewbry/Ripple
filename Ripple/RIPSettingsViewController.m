@@ -53,7 +53,7 @@
 //    [self.navigationController popToRootViewControllerAnimated:NO];
 //    [[self.navigationController presentedViewController] dismissViewControllerAnimated:NO completion:NULL];
 
-    RIPSignUpViewController *signUpVC = [[RIPSignUpViewController alloc] init];
+    RIPSignUpViewController *signUpVC = [[RIPSignUpViewController alloc] initWithNibName:@"SignUp" bundle:[NSBundle mainBundle]];
     RIPAppDelegate *app = [[UIApplication sharedApplication] delegate];
     app.window.rootViewController = signUpVC;
     [app.window makeKeyAndVisible];

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RIPSignUpViewController">
+            <connections>
+                <outlet property="joinUsButton" destination="w3t-pa-IQY" id="lhR-jB-1Lx"/>
+                <outlet property="passwordTextField" destination="hxu-2R-kah" id="Dev-qR-v1d"/>
+                <outlet property="usernameTextField" destination="0HH-Ok-0ZP" id="bYk-5V-Rva"/>
+                <outlet property="view" destination="iN0-l3-epB" id="9Bi-gn-sFH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Ripple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7c-jm-q6U">
+                    <rect key="frame" x="20" y="39" width="280" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="4DJ-2C-BbN"/>
+                        <constraint firstAttribute="width" constant="280" id="UMF-q3-lzI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
+                    <color key="textColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3t-pa-IQY">
+                    <rect key="frame" x="20" y="191" width="280" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="A7k-5h-YzQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="JOIN US">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didPressJoinUs:" destination="-1" eventType="touchUpInside" id="sYH-OD-E4N"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0HH-Ok-0ZP">
+                    <rect key="frame" x="20" y="123" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="1cY-e1-6oE"/>
+                    </constraints>
+                    <color key="textColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hxu-2R-kah">
+                    <rect key="frame" x="20" y="153" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="UGg-hy-ceo"/>
+                    </constraints>
+                    <color key="textColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="q7c-jm-q6U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="0Xz-Op-dlq"/>
+                <constraint firstItem="q7c-jm-q6U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="FDN-Yk-Vph"/>
+                <constraint firstItem="w3t-pa-IQY" firstAttribute="leading" secondItem="hxu-2R-kah" secondAttribute="leading" id="GDk-5f-0CY"/>
+                <constraint firstItem="0HH-Ok-0ZP" firstAttribute="trailing" secondItem="hxu-2R-kah" secondAttribute="trailing" id="Gmq-7c-ad5"/>
+                <constraint firstItem="0HH-Ok-0ZP" firstAttribute="leading" secondItem="hxu-2R-kah" secondAttribute="leading" id="IbX-u5-9Qi"/>
+                <constraint firstItem="hxu-2R-kah" firstAttribute="trailing" secondItem="w3t-pa-IQY" secondAttribute="trailing" id="Keh-Lx-VCy"/>
+                <constraint firstAttribute="bottom" secondItem="w3t-pa-IQY" secondAttribute="bottom" constant="248" id="NPa-u5-UfJ"/>
+                <constraint firstItem="hxu-2R-kah" firstAttribute="top" secondItem="0HH-Ok-0ZP" secondAttribute="bottom" id="Wzr-lJ-dFC"/>
+                <constraint firstItem="w3t-pa-IQY" firstAttribute="top" secondItem="hxu-2R-kah" secondAttribute="bottom" constant="8" symbolic="YES" id="YXs-Jq-xOV"/>
+                <constraint firstItem="0HH-Ok-0ZP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="ZTV-bb-xBQ"/>
+                <constraint firstAttribute="trailing" secondItem="q7c-jm-q6U" secondAttribute="trailing" constant="20" id="m85-9N-o8p"/>
+                <constraint firstAttribute="trailing" secondItem="0HH-Ok-0ZP" secondAttribute="trailing" constant="20" symbolic="YES" id="nvo-ks-ub5"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

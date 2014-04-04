@@ -8,14 +8,17 @@
 
 #import "RIPProfileViewController.h"
 #import <Parse/Parse.h>
+#import <VLBCameraView.h>
 
-@interface RIPProfileViewController ()
+@interface RIPProfileViewController () <VLBCameraViewDelegate>
 
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *collegeLabel;
-@property (nonatomic, strong) UILabel *statusLabel;
-@property (nonatomic, strong) UILabel *birthdayLabel;
-@property (nonatomic, strong) UIImageView *profilePictureImageView;
+
+@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *collegeTextField;
+@property (strong, nonatomic) IBOutlet UITextField *statusTextField;
+@property (strong, nonatomic) IBOutlet UITextField *birthdayTextField;
+
+@property (nonatomic, weak) IBOutlet VLBCameraView *profilePictureImageView;
 
 @end
 
@@ -32,75 +35,90 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
+    // if a user is logged in fetch data and update view
+        [[PFUser currentUser] fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if ([PFUser currentUser].username) self.nameTextField.text = [PFUser currentUser].username;
+            if ([PFUser currentUser][@"college"]) self.collegeTextField.text = [PFUser currentUser][@"college"];
+            if ([PFUser currentUser][@"relationshipStatus"]) self.statusTextField.text = [PFUser currentUser][@"relationshipStatus"];
+            if ([PFUser currentUser][@"birthday"]) self.birthdayTextField.text = [PFUser currentUser][@"birthday"];
 
-    // TODO figure out view life cycle so config happens right
-    //      and then plugging in values happens
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 235, 300, 40)];
-    self.nameLabel.text = @"Hello World";
-    self.nameLabel.textAlignment = NSTextAlignmentCenter;
-    self.nameLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:24];
-    self.nameLabel.textColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0];
-    [self.view addSubview:self.nameLabel];
-
-    self.collegeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 260, 300, 40)];
-    self.collegeLabel.text = @"CMC";
-    self.collegeLabel.textAlignment = NSTextAlignmentCenter;
-    self.collegeLabel.font = [UIFont fontWithName:@"Avenir-Book" size:20];
-    self.collegeLabel.textColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0];
-    [self.view addSubview:self.collegeLabel];
-
-    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 285, 300, 40)];
-    self.statusLabel.text = @"Single";
-    self.statusLabel.textAlignment = NSTextAlignmentCenter;
-    self.statusLabel.font = [UIFont fontWithName:@"Avenir-Book" size:20];
-    self.statusLabel.textColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0];
-    [self.view addSubview:self.statusLabel];
-
-    self.birthdayLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 310, 300, 40)];
-    self.birthdayLabel.text = @"05/21/1992";
-    self.birthdayLabel.textAlignment = NSTextAlignmentCenter;
-    self.birthdayLabel.font = [UIFont fontWithName:@"Avenir-Book" size:20];
-    self.birthdayLabel.textColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0];
-    [self.view addSubview:self.birthdayLabel];
-
-    self.profilePictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(80, 80, 160, 160)];
-    self.profilePictureImageView.image = [UIImage imageNamed:@"user.png"];
-    self.profilePictureImageView.clipsToBounds = true;
-    self.profilePictureImageView.layer.cornerRadius = 80;
-    self.profilePictureImageView.layer.borderColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0].CGColor;
-    self.profilePictureImageView.layer.borderWidth = 1;
-    [self.view addSubview:self.profilePictureImageView];
-
-    [[PFUser currentUser] fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        self.nameLabel.text = [PFUser currentUser].username;
-        self.collegeLabel.text = [PFUser currentUser][@"college"];
-        self.statusLabel.text = [PFUser currentUser][@"relationshipStatus"];
-        self.birthdayLabel.text = [PFUser currentUser][@"birthday"];
-
-        PFFile *imgFile = [PFUser currentUser][@"profileImage"];
-        [imgFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            self.profilePictureImageView.image = [UIImage imageWithData:data];
         }];
-    }];
+
+    // set camera view circle mask and outline
+    self.profilePictureImageView.layer.cornerRadius = 90;
+    self.profilePictureImageView.layer.borderColor = [UIColor colorWithRed:59.0/255.0 green:237.0/255.0 blue:233.0/255.0 alpha:1.0].CGColor;
+    self.profilePictureImageView.layer.borderWidth = 1;
+
+    // set view gesture recognizer
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+    [self.view addGestureRecognizer:tap];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidAppear:animated];
+
+//    self.profilePictureImageView = [[VLBCameraView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+//    //    self.profilePictureImageView.backgroundColor = [UIColor purpleColor];
+//    //    self.profilePictureImageView.clipsToBounds = true;
+//    //    self.profilePictureImageView.layer.cornerRadius = 80;
+//    //    self.profilePictureImageView.layer.borderColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0].CGColor;
+//    //    self.profilePictureImageView.layer.borderWidth = 1;
+//    self.profilePictureImageView.delegate = self;
+//    self.profilePictureImageView.allowPictureRetake = true;
+//    [self.view addSubview:self.profilePictureImageView];
+
+//    VLBCameraView *view = [[VLBCameraView alloc] initWithFrame:CGRectMake(0,60,320,320)];
+//    view.delegate = self;
+//    [self.view addSubview:view];
+//
+//    [view takePicture];
+    self.profilePictureImageView.allowPictureRetake = true;
+
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+#pragma mark - VLBImageViewDelegate
+- (void)cameraView:(VLBCameraView *)cameraView didFinishTakingPicture:(UIImage *)image withInfo:(NSDictionary *)info meta:(NSDictionary *)meta
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
 }
-*/
+
+- (void)cameraView:(VLBCameraView *)cameraView didErrorOnTakePicture:(NSError *)error
+{
+
+}
+
+- (void)cameraView:(VLBCameraView *)cameraView willRetakePicture:(UIImage *)image
+{
+
+}
+
+#pragma mark - editing profile (except picture which is above)
+- (IBAction)didFinishEditingName:(id)sender {
+    [PFUser currentUser].username = [(UITextField *)sender text];
+}
+
+- (IBAction)didFinishEditingCollege:(id)sender {
+    [PFUser currentUser][@"college"] = [(UITextField *)sender text];
+}
+
+- (IBAction)didFinishEditingRelationshipStatus:(id)sender {
+    [PFUser currentUser][@"relationshipStatus"] = [(UITextField *)sender text];
+}
+
+- (IBAction)didFinishEditingBirthday:(id)sender {
+    [PFUser currentUser][@"birthday"] = [(UITextField *)sender text];
+}
+
+#pragma mark - gesture recognizers
+- (void)didTap:(id)sender
+{
+    [self.profilePictureImageView takePicture];
+}
+
+
+
+
 
 @end
