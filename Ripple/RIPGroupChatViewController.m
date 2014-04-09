@@ -11,25 +11,30 @@
 #import <SwipeView/SwipeView.h>
 #import <JSMessage.h>
 #import "RIPInviteContactsTableViewController.h"
-#import "SBUser.h"
-#import "SBUserBroadcast.h"
 
 #import <Parse/Parse.h>
 #import "RIPPeopleAroundData.h"
 #import "RIPProfileViewController.h"
 
+#import "SBUser.h"
+#import "SBUserBroadcast.h"
+
 @interface RIPGroupChatViewController () <SwipeViewDataSource, SwipeViewDelegate, JSMessagesViewDataSource, JSMessagesViewDelegate>
+
+@property (nonatomic, strong) SwipeView *peopleAround;
 
 @end
 
 @implementation RIPGroupChatViewController
+
+@synthesize peopleAround;
 
 - (id)init
 {
     if (self = [super init]){
 
         // display people around you
-        SwipeView *peopleAround = [[SwipeView alloc] initWithFrame:CGRectMake(0 , 64, 320, 60)];
+        peopleAround = [[SwipeView alloc] initWithFrame:CGRectMake(0 , 64, 320, 60)];
         peopleAround.backgroundColor = [UIColor clearColor];
         peopleAround.itemsPerPage = 5;
         peopleAround.truncateFinalPage = false;
@@ -77,6 +82,15 @@
     self.navigationItem.rightBarButtonItem = settingsItem;
 
     [self setBackgroundColor:[UIColor whiteColor]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // reload nearby people and profile to update if new people are discovered
+    // or if user updated profile
+    [peopleAround reloadData];
 }
 
 #pragma mark - chat data source : REQUIRED
@@ -182,8 +196,10 @@
 
 - (void)didPressProfile:(id)sender
 {
-    RIPProfileViewController *myProfileVC = [[RIPProfileViewController alloc] init];
-    [self.navigationController pushViewController:myProfileVC animated:NO];
+    RIPProfileViewController *myProfileVC = [[RIPProfileViewController alloc] initWithNibName:@"Profile" bundle:[NSBundle mainBundle]];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:myProfileVC];
+
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)didPressSettings:(id)sender

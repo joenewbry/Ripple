@@ -9,8 +9,10 @@
                 <outlet property="birthdayTextField" destination="i5d-0o-RCj" id="uCJ-wh-RY0"/>
                 <outlet property="collegeTextField" destination="6gC-sr-Iau" id="38d-C5-CZo"/>
                 <outlet property="nameTextField" destination="eD2-Vn-qfz" id="6bj-Bh-nKS"/>
+                <outlet property="profilePicture" destination="XRc-Pu-yDc" id="nCs-Kd-j1k"/>
                 <outlet property="profilePictureImageView" destination="scS-zC-un1" id="9A4-rT-Y82"/>
                 <outlet property="statusTextField" destination="dqs-0p-X75" id="Fka-B8-cDH"/>
+                <outlet property="takePictureButton" destination="Ps2-5V-Wxy" id="VDg-u8-6Xq"/>
                 <outlet property="view" destination="iN0-l3-epB" id="C8e-uf-d0d"/>
             </connections>
         </placeholder>
@@ -19,54 +21,116 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="scS-zC-un1" customClass="VLBCameraView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scS-zC-un1" customClass="VLBCameraView">
                     <rect key="frame" x="70" y="85" width="180" height="180"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="John Smith" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eD2-Vn-qfz">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="John Smith" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eD2-Vn-qfz">
                     <rect key="frame" x="20" y="288" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                     <connections>
                         <action selector="didFinishEditingName:" destination="-1" eventType="editingDidEnd" id="d1H-bf-iKG"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Single" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dqs-0p-X75">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Single" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dqs-0p-X75">
                     <rect key="frame" x="20" y="355" width="280" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="KCl-tl-OGO"/>
+                    </constraints>
                     <color key="textColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                     <connections>
                         <action selector="didFinishEditingRelationshipStatus:" destination="-1" eventType="editingDidEnd" id="Fzc-aa-0ND"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birthday" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i5d-0o-RCj">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birthday" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i5d-0o-RCj">
                     <rect key="frame" x="20" y="386" width="280" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="19" id="Wak-fU-ja4"/>
+                    </constraints>
                     <color key="textColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
                         <action selector="didFinishEditingBirthday:" destination="-1" eventType="editingDidEnd" id="Xrs-qS-DFr"/>
-                        <action selector="didFinishEditingRelationshipStatus:" destination="-1" eventType="editingDidEnd" id="Gaz-M3-TDS"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Claremont McKenna College" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-sr-Iau">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Claremont McKenna College" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6gC-sr-Iau">
                     <rect key="frame" x="20" y="326" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="CBs-Mi-xfZ"/>
+                    </constraints>
                     <color key="textColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                     <connections>
                         <action selector="didFinishEditingCollege:" destination="-1" eventType="editingDidEnd" id="7Rx-Vj-XLk"/>
                     </connections>
                 </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XRc-Pu-yDc">
+                    <rect key="frame" x="70" y="85" width="180" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="3nv-aA-Xa2"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ps2-5V-Wxy">
+                    <rect key="frame" x="20" y="419" width="280" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="J9g-vH-fdf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="TAKE PICTURE">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didPressTakePicture:" destination="-1" eventType="touchUpInside" id="HbS-73-sKn"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XRc-Pu-yDc" firstAttribute="leading" secondItem="scS-zC-un1" secondAttribute="leading" id="0Wv-rQ-MuI"/>
+                <constraint firstItem="eD2-Vn-qfz" firstAttribute="centerX" secondItem="XRc-Pu-yDc" secondAttribute="centerX" id="2GJ-gx-iQy"/>
+                <constraint firstItem="6gC-sr-Iau" firstAttribute="leading" secondItem="eD2-Vn-qfz" secondAttribute="leading" id="7Cc-yR-vY0"/>
+                <constraint firstItem="6gC-sr-Iau" firstAttribute="leading" secondItem="dqs-0p-X75" secondAttribute="leading" id="7yo-uv-vop"/>
+                <constraint firstItem="dqs-0p-X75" firstAttribute="leading" secondItem="i5d-0o-RCj" secondAttribute="leading" id="A7l-uL-3xO"/>
+                <constraint firstItem="6gC-sr-Iau" firstAttribute="trailing" secondItem="eD2-Vn-qfz" secondAttribute="trailing" id="Cgt-nn-ZVv"/>
+                <constraint firstAttribute="bottom" secondItem="Ps2-5V-Wxy" secondAttribute="bottom" constant="20" symbolic="YES" id="Cz5-vY-5Ui"/>
+                <constraint firstItem="Ps2-5V-Wxy" firstAttribute="top" secondItem="i5d-0o-RCj" secondAttribute="bottom" constant="14" id="Fpl-wy-DoZ"/>
+                <constraint firstItem="eD2-Vn-qfz" firstAttribute="top" secondItem="XRc-Pu-yDc" secondAttribute="bottom" constant="23" id="Hhe-jl-2nF"/>
+                <constraint firstItem="i5d-0o-RCj" firstAttribute="leading" secondItem="Ps2-5V-Wxy" secondAttribute="leading" id="JuE-UR-Vf6"/>
+                <constraint firstItem="XRc-Pu-yDc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="PxN-0u-SwV"/>
+                <constraint firstItem="dqs-0p-X75" firstAttribute="trailing" secondItem="6gC-sr-Iau" secondAttribute="trailing" id="SQX-Qg-J9O"/>
+                <constraint firstItem="6gC-sr-Iau" firstAttribute="top" secondItem="eD2-Vn-qfz" secondAttribute="bottom" constant="8" symbolic="YES" id="TDT-Xr-Zhr"/>
+                <constraint firstItem="i5d-0o-RCj" firstAttribute="trailing" secondItem="Ps2-5V-Wxy" secondAttribute="trailing" id="V3d-cw-lj6"/>
+                <constraint firstItem="XRc-Pu-yDc" firstAttribute="bottom" secondItem="scS-zC-un1" secondAttribute="bottom" id="XEN-E9-TVL"/>
+                <constraint firstItem="dqs-0p-X75" firstAttribute="top" secondItem="6gC-sr-Iau" secondAttribute="bottom" constant="8" symbolic="YES" id="cLg-t0-htg"/>
+                <constraint firstAttribute="trailing" secondItem="Ps2-5V-Wxy" secondAttribute="trailing" constant="20" symbolic="YES" id="dLV-lk-JWi"/>
+                <constraint firstItem="XRc-Pu-yDc" firstAttribute="trailing" secondItem="scS-zC-un1" secondAttribute="trailing" id="hRK-bj-0w6"/>
+                <constraint firstItem="XRc-Pu-yDc" firstAttribute="top" secondItem="scS-zC-un1" secondAttribute="top" id="luG-Jw-i6k"/>
+                <constraint firstItem="Ps2-5V-Wxy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="mmx-W2-iQq"/>
+                <constraint firstItem="XRc-Pu-yDc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="70" id="pD8-69-StE"/>
+                <constraint firstItem="i5d-0o-RCj" firstAttribute="trailing" secondItem="dqs-0p-X75" secondAttribute="trailing" id="se7-Tz-tcV"/>
+                <constraint firstItem="i5d-0o-RCj" firstAttribute="top" secondItem="dqs-0p-X75" secondAttribute="bottom" constant="8" symbolic="YES" id="w07-oU-Cgq"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>

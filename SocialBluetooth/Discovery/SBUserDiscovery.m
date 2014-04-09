@@ -1,4 +1,4 @@
-//
+ //
 //  SBUserDiscovery.m
 //  Blink
 //
@@ -161,7 +161,7 @@ BOOL searchWhenReady;
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-    if (error) NSLog(@"Central manager disconnected from peripheral with error: @%", [error localizedDescription]);
+    if (error) NSLog(@"Central manager disconnected from peripheral with error: %@", [error localizedDescription]);
 }
 
 // peripheral delegate methods

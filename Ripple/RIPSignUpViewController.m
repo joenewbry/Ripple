@@ -11,13 +11,19 @@
 #import "RIPGroupChatViewController.h"
 #import "RIPProfileViewController.h"
 #import "RIPSaveImage.h"
+#import "SBUser.h"
+#import "SBUserBroadcast.h"
+#import <FUIButton.h> // buttons
+#import <UIFont+FlatUI.h> // custom font
+#import <FlatUIKit/UIColor+FlatUI.h> // flat colors
 
 @interface RIPSignUpViewController ()
 
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
-@property (strong, nonatomic) IBOutlet UIButton *joinUsButton;
+@property (strong, nonatomic) IBOutlet FUIButton *joinUsButton;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
 // store user profile image from facebook
 @property (nonatomic, strong) NSMutableData *imgData;
@@ -29,9 +35,9 @@
 
 @implementation RIPSignUpViewController
 
-- (id)init
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if (self = [super init]) {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
 
     }
     return self;
@@ -41,6 +47,25 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.titleLabel setFont:[UIFont fontWithName:@"ComicNeue-Light" size:60]];
+    [self.titleLabel setText:@"TweetDar"];
+
+    // animate drawing of text
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = 10.0;
+    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    [self.titleLabel.layer addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+
+    self.joinUsButton.buttonColor = [UIColor peterRiverColor];
+    [self.joinUsButton setBackgroundColor:[UIColor peterRiverColor]];
+    self.joinUsButton.shadowColor = [UIColor belizeHoleColor];
+    self.joinUsButton.shadowHeight = 3.0f;
+    self.joinUsButton.cornerRadius = 6.0f;
+    self.joinUsButton.titleLabel.font = [UIFont fontWithName:@"ComicNeue-Bold" size:20];
+    [self.joinUsButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.joinUsButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateSelected];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,10 +101,20 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 
         // we've create a new user
+
+        // fire up user broadcast using social bluetooth framework
+        // once logged in set information to be broadcasted
+        [SBUser createUserWithObjectId:[PFUser currentUser].objectId];
+        [[SBUserBroadcast currentUserBroadcast] peripheralAddUserProfileService];
+
+        RIPProfileViewController *myProfileVC = [[RIPProfileViewController alloc] initWithNibName:@"Profile" bundle:[NSBundle mainBundle]];
         RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
+
+        
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
         RIPProfileViewController *profileVC = [[RIPProfileViewController alloc] initWithNibName:@"Profile" bundle:[NSBundle mainBundle]];
-        [navController pushViewController:profileVC animated:NO];
+        [groupChatVC presentViewController:profileVC animated:NO completion:nil];
+
         [self presentViewController:navController animated:NO completion:NULL];
     }];
 

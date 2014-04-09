@@ -70,7 +70,7 @@ static RIPPeopleAroundData *instance = nil;
 //    }
     if (index == 0) {
 
-        PFFile *profileImage = [PFUser currentUser][@"thumbnailImage"];
+        PFFile *profileImage = [PFUser currentUser][@"profilePicture"];
         NSData *imgData = [profileImage getData];
 
         //[profileImage imageFromFileWithPlaceholderImage:[UIImage imageNamed:@"user"]];
@@ -104,7 +104,7 @@ static RIPPeopleAroundData *instance = nil;
         [queryForUser whereKey:@"objectId" equalTo:objectId];
         [queryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             PFUser *discoveredUser = objects[0];
-            PFFile *thumbnailFile = discoveredUser[@"thumbnailImage"];
+            PFFile *thumbnailFile = discoveredUser[@"profilePicture"];
             [thumbnailFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 [self.peopleAround addObject:[UIImage imageWithData:data]];
                 // adjust for 1 additional slot, your profile, and count overstepping index by 1

@@ -7,8 +7,9 @@
 //
 
 #import "SBUserBroadcast.h"
-#import "SBUser.h"
 #import <CoreBluetooth/CoreBluetooth.h>
+
+#import <Parse/Parse.h>
 
 NSString *peripheralRestorationUUID = @"A6499ECB-0B6C-4609-B161-E3D15687AF3D";
 
@@ -126,7 +127,7 @@ BOOL shareProfileWhenReady;
         return;
     }
     // read values from SBUser ToSetCharacteristicValues
-    NSString *objectId = [SBUser currentUser].objectId;
+    NSString *objectId = [PFUser currentUser].objectId;
     NSData *objectIdData = [objectId dataUsingEncoding:NSUTF8StringEncoding];
     self.objectIdCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:SBBroadcastCharacteristicUserProfileObjectId] properties:CBCharacteristicPropertyRead value:objectIdData permissions:CBAttributePermissionsReadable];
 
@@ -192,6 +193,7 @@ BOOL shareProfileWhenReady;
 - (void)peripheralManager:(CBPeripheralManager *)peripheral
             didAddService:(CBService *)myService
                     error:(NSError *)error {
+    NSLog(@"Peripheral manager did add service %@", [myService description]);
     if (error) {
     }
 
@@ -203,6 +205,7 @@ BOOL shareProfileWhenReady;
 
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error
 {
+    NSLog(@"Peripheral Manager stated advertising peripheral %@", [peripheral description]);
     if (error) {
     } else {
     }

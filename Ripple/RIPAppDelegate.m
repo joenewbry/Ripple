@@ -42,7 +42,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
 
     // set root view controller depending on if a user is logged in
-    [PFUser logOut];
+    //[PFUser logOut];
     if ([PFUser currentUser]) {
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[RIPGroupChatViewController new]];
 

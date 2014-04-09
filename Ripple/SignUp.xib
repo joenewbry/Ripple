@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="joinUsButton" destination="w3t-pa-IQY" id="lhR-jB-1Lx"/>
                 <outlet property="passwordTextField" destination="hxu-2R-kah" id="Dev-qR-v1d"/>
+                <outlet property="titleLabel" destination="q7c-jm-q6U" id="u0J-gF-Qlz"/>
                 <outlet property="usernameTextField" destination="0HH-Ok-0ZP" id="bYk-5V-Rva"/>
                 <outlet property="view" destination="iN0-l3-epB" id="9Bi-gn-sFH"/>
             </connections>
@@ -18,17 +19,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Ripple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7c-jm-q6U">
-                    <rect key="frame" x="20" y="39" width="280" height="41"/>
+                    <rect key="frame" x="20" y="20" width="280" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="41" id="4DJ-2C-BbN"/>
+                        <constraint firstAttribute="height" constant="60" id="4DJ-2C-BbN"/>
                         <constraint firstAttribute="width" constant="280" id="UMF-q3-lzI"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                     <color key="textColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3t-pa-IQY">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3t-pa-IQY" customClass="FUIButton">
                     <rect key="frame" x="20" y="191" width="280" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.14117647059999999" green="0.50196078430000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,6 +42,11 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didPressJoinUs:" destination="-1" eventType="touchUpInside" id="sYH-OD-E4N"/>
                     </connections>
@@ -69,7 +75,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="q7c-jm-q6U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="0Xz-Op-dlq"/>
-                <constraint firstItem="q7c-jm-q6U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="FDN-Yk-Vph"/>
+                <constraint firstItem="q7c-jm-q6U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="FDN-Yk-Vph"/>
                 <constraint firstItem="w3t-pa-IQY" firstAttribute="leading" secondItem="hxu-2R-kah" secondAttribute="leading" id="GDk-5f-0CY"/>
                 <constraint firstItem="0HH-Ok-0ZP" firstAttribute="trailing" secondItem="hxu-2R-kah" secondAttribute="trailing" id="Gmq-7c-ad5"/>
                 <constraint firstItem="0HH-Ok-0ZP" firstAttribute="leading" secondItem="hxu-2R-kah" secondAttribute="leading" id="IbX-u5-9Qi"/>

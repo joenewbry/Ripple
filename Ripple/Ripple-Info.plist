@@ -48,5 +48,19 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ComicNeue-Angular-Bold-Oblique.ttf</string>
+		<string>ComicNeue-Angular-Bold.ttf</string>
+		<string>ComicNeue-Angular-Light-Oblique.ttf</string>
+		<string>ComicNeue-Angular-Light.ttf</string>
+		<string>ComicNeue-Angular-Regular-Oblique.ttf</string>
+		<string>ComicNeue-Bold-Oblique.ttf</string>
+		<string>ComicNeue-Bold.ttf</string>
+		<string>ComicNeue-Light-Oblique.ttf</string>
+		<string>ComicNeue-Light.ttf</string>
+		<string>ComicNeue-Regular-Oblique.ttf</string>
+		<string>ComicNeue-Regular.ttf</string>
+	</array>
 </dict>
 </plist>
