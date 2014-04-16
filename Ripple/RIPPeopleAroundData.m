@@ -42,6 +42,7 @@ static RIPPeopleAroundData *instance = nil;
 - (void)startSearchForNearbyPeople
 {
     // start search for people around you
+    [SBUserDiscovery createUserDiscovery];
     [SBUserDiscovery currentUserDiscovery].delegate = self;
     [[SBUserDiscovery currentUserDiscovery] searchForUsers];
 
@@ -97,21 +98,26 @@ static RIPPeopleAroundData *instance = nil;
 
 #pragma mark - SBUserConnection Delegate
 
-- (void)userDidConnectWithobjectId:(NSString *)objectId
+- (void)didReceiveUserID:(NSString *)userID
 {
-    if (![self.discoveredUserObjectIds containsObject:objectId]) {
+    if (![self.discoveredUserObjectIds containsObject:userID]) {
+        [self.discoveredUserObjectIds addObject:userID]; // store so we don't make a second request
         PFQuery *queryForUser = [PFQuery queryWithClassName:@"_User"];
-        [queryForUser whereKey:@"objectId" equalTo:objectId];
+        [queryForUser whereKey:@"objectId" equalTo:userID];
         [queryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            PFUser *discoveredUser = objects[0];
-            PFFile *thumbnailFile = discoveredUser[@"profilePicture"];
-            [thumbnailFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                [self.peopleAround addObject:[UIImage imageWithData:data]];
-                // adjust for 1 additional slot, your profile, and count overstepping index by 1
-                // +1 -1 = 0
-                [self.swipeView reloadItemAtIndex:[self.peopleAround count]];
-            }];
-
+            // need to make sure it's a valid request
+            if (objects && [objects count] > 0) {
+                PFUser *discoveredUser = objects[0];
+                PFFile *thumbnailFile = discoveredUser[@"profilePicture"];
+                [thumbnailFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    [self.peopleAround addObject:[UIImage imageWithData:data]];
+                    // adjust for 1 additional slot, your profile, and count overstepping index by 1
+                    // +1 -1 = 0
+                    [self.swipeView reloadData];
+                    NSLog(@"Swipe view should have another person");
+                    //[self.swipeView reloadItemAtIndex:[self.peopleAround count]];
+                }];
+            } 
         }];
     }
 }

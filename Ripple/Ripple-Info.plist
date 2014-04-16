@@ -48,6 +48,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-peripheral</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ComicNeue-Angular-Bold-Oblique.ttf</string>

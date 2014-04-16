@@ -11,7 +11,6 @@
 #import "RIPGroupChatViewController.h"
 #import "RIPProfileViewController.h"
 #import "RIPSaveImage.h"
-#import "SBUser.h"
 #import "SBUserBroadcast.h"
 #import <FUIButton.h> // buttons
 #import <UIFont+FlatUI.h> // custom font
@@ -104,8 +103,9 @@
 
         // fire up user broadcast using social bluetooth framework
         // once logged in set information to be broadcasted
-        [SBUser createUserWithObjectId:[PFUser currentUser].objectId];
-        [[SBUserBroadcast currentUserBroadcast] peripheralAddUserProfileService];
+        [[SBUserBroadcast currentBroadcast] setUniqueIdentifier:[PFUser currentUser].objectId];
+        [[SBUserBroadcast currentBroadcast] addServices];
+        [[SBUserBroadcast currentBroadcast] startBroadcast];
 
         RIPProfileViewController *myProfileVC = [[RIPProfileViewController alloc] initWithNibName:@"Profile" bundle:[NSBundle mainBundle]];
         RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];

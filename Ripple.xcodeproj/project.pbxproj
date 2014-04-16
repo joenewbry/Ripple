@@ -62,10 +62,6 @@
 		D8DDCE0D18E1508900648536 /* RIPInviteContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE0C18E1508900648536 /* RIPInviteContactsTableViewController.m */; };
 		D8DDCE1718E1E89000648536 /* RIPPeopleAroundData.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE1618E1E89000648536 /* RIPPeopleAroundData.m */; };
 		D8DDCE1B18E1E91100648536 /* RIPPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE1A18E1E91100648536 /* RIPPerson.m */; };
-		D8DDCE3718E1ECDC00648536 /* SBUserBroadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE2E18E1ECDC00648536 /* SBUserBroadcast.m */; };
-		D8DDCE3918E1ECDC00648536 /* SBUserDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE3318E1ECDC00648536 /* SBUserDiscovery.m */; };
-		D8DDCE3A18E1ECDC00648536 /* SBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE3618E1ECDC00648536 /* SBUser.m */; };
-		D8DDCE4018E1FB2D00648536 /* CBUUID+StringExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE3F18E1FB2D00648536 /* CBUUID+StringExtraction.m */; };
 		D8DDCE4318E35B8200648536 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DDCE4218E35B8200648536 /* MessageUI.framework */; };
 		D8DDCE4618E3633100648536 /* RIPSaveImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE4518E3633100648536 /* RIPSaveImage.m */; };
 		D8DDCE4A18E37B3500648536 /* PFFile+UIImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DDCE4918E37B3500648536 /* PFFile+UIImageHelper.m */; };
@@ -154,14 +150,6 @@
 		D8DDCE1618E1E89000648536 /* RIPPeopleAroundData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPPeopleAroundData.m; sourceTree = "<group>"; };
 		D8DDCE1918E1E91100648536 /* RIPPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPPerson.h; sourceTree = "<group>"; };
 		D8DDCE1A18E1E91100648536 /* RIPPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPPerson.m; sourceTree = "<group>"; };
-		D8DDCE2D18E1ECDC00648536 /* SBUserBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUserBroadcast.h; sourceTree = "<group>"; };
-		D8DDCE2E18E1ECDC00648536 /* SBUserBroadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBUserBroadcast.m; sourceTree = "<group>"; };
-		D8DDCE3218E1ECDC00648536 /* SBUserDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUserDiscovery.h; sourceTree = "<group>"; };
-		D8DDCE3318E1ECDC00648536 /* SBUserDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBUserDiscovery.m; sourceTree = "<group>"; };
-		D8DDCE3518E1ECDC00648536 /* SBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUser.h; sourceTree = "<group>"; };
-		D8DDCE3618E1ECDC00648536 /* SBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBUser.m; sourceTree = "<group>"; };
-		D8DDCE3E18E1FB2D00648536 /* CBUUID+StringExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+StringExtraction.h"; sourceTree = "<group>"; };
-		D8DDCE3F18E1FB2D00648536 /* CBUUID+StringExtraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+StringExtraction.m"; sourceTree = "<group>"; };
 		D8DDCE4218E35B8200648536 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D8DDCE4418E3633100648536 /* RIPSaveImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPSaveImage.h; sourceTree = "<group>"; };
 		D8DDCE4518E3633100648536 /* RIPSaveImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPSaveImage.m; sourceTree = "<group>"; };
@@ -235,7 +223,6 @@
 				D8EEB98B18ECFEC500EA0E45 /* CoreImage.framework */,
 				D8EEB98918ECFE7D00EA0E45 /* CoreVideo.framework */,
 				D8DDCE4218E35B8200648536 /* MessageUI.framework */,
-				D8DDCE2818E1EC0A00648536 /* SocialBluetooth */,
 				D8DDCE0918E1410100648536 /* AddressBook.framework */,
 				D81B512918DE69BF00E73E6C /* Foundation.framework */,
 				D81B512B18DE69BF00E73E6C /* CoreGraphics.framework */,
@@ -392,65 +379,6 @@
 				D8EEB98718ECBF8100EA0E45 /* RIPChatData.m */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		D8DDCE2818E1EC0A00648536 /* SocialBluetooth */ = {
-			isa = PBXGroup;
-			children = (
-				D8DDCE2C18E1ECDC00648536 /* Broadcast */,
-				D8DDCE2F18E1ECDC00648536 /* Discovery */,
-				D8DDCE3418E1ECDC00648536 /* User */,
-				D8DDCE3B18E1F48100648536 /* Unused */,
-				D8DDCE4118E1FB3200648536 /* SupportingFiles */,
-			);
-			name = SocialBluetooth;
-			sourceTree = "<group>";
-		};
-		D8DDCE2C18E1ECDC00648536 /* Broadcast */ = {
-			isa = PBXGroup;
-			children = (
-				D8DDCE2D18E1ECDC00648536 /* SBUserBroadcast.h */,
-				D8DDCE2E18E1ECDC00648536 /* SBUserBroadcast.m */,
-			);
-			name = Broadcast;
-			path = SocialBluetooth/Broadcast;
-			sourceTree = "<group>";
-		};
-		D8DDCE2F18E1ECDC00648536 /* Discovery */ = {
-			isa = PBXGroup;
-			children = (
-				D8DDCE3218E1ECDC00648536 /* SBUserDiscovery.h */,
-				D8DDCE3318E1ECDC00648536 /* SBUserDiscovery.m */,
-			);
-			name = Discovery;
-			path = SocialBluetooth/Discovery;
-			sourceTree = "<group>";
-		};
-		D8DDCE3418E1ECDC00648536 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				D8DDCE3518E1ECDC00648536 /* SBUser.h */,
-				D8DDCE3618E1ECDC00648536 /* SBUser.m */,
-			);
-			name = User;
-			path = SocialBluetooth/User;
-			sourceTree = "<group>";
-		};
-		D8DDCE3B18E1F48100648536 /* Unused */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Unused;
-			path = SocialBluetooth/Discovery;
-			sourceTree = "<group>";
-		};
-		D8DDCE4118E1FB3200648536 /* SupportingFiles */ = {
-			isa = PBXGroup;
-			children = (
-				D8DDCE3E18E1FB2D00648536 /* CBUUID+StringExtraction.h */,
-				D8DDCE3F18E1FB2D00648536 /* CBUUID+StringExtraction.m */,
-			);
-			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		D8DDCE4718E3633600648536 /* Utilities */ = {
@@ -636,18 +564,14 @@
 				D8DDCE1718E1E89000648536 /* RIPPeopleAroundData.m in Sources */,
 				D8DDCE0D18E1508900648536 /* RIPInviteContactsTableViewController.m in Sources */,
 				D8EEB98518ECA9D700EA0E45 /* RIPProfileViewController.m in Sources */,
-				D8DDCE3A18E1ECDC00648536 /* SBUser.m in Sources */,
 				D8BA392E18F5CA3D003E7432 /* UIFont+FontLookup.m in Sources */,
 				D8DDCE4618E3633100648536 /* RIPSaveImage.m in Sources */,
-				D8DDCE3918E1ECDC00648536 /* SBUserDiscovery.m in Sources */,
 				D8DDCE1B18E1E91100648536 /* RIPPerson.m in Sources */,
 				D81B513A18DE69BF00E73E6C /* RIPAppDelegate.m in Sources */,
 				D81B513618DE69BF00E73E6C /* main.m in Sources */,
 				D8DDCDFB18E0C58500648536 /* RIPSettingsViewController.m in Sources */,
-				D8DDCE4018E1FB2D00648536 /* CBUUID+StringExtraction.m in Sources */,
 				D8DDCDEF18E0A2AA00648536 /* RIPGroupChatViewController.m in Sources */,
 				D8EEB98818ECBF8100EA0E45 /* RIPChatData.m in Sources */,
-				D8DDCE3718E1ECDC00648536 /* SBUserBroadcast.m in Sources */,
 				D8DDCE4A18E37B3500648536 /* PFFile+UIImageHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,7 +693,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ripple;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -783,7 +707,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ripple;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -804,7 +728,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "RippleTests/RippleTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RippleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -822,7 +746,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				INFOPLIST_FILE = "RippleTests/RippleTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RippleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "RIPGroupChatViewController.h"
 #import "RIPSignUpViewController.h"
+#import "SBUserBroadcast.h"
 
 @implementation RIPAppDelegate
 
@@ -36,6 +37,8 @@
       nil]];
 
 
+
+
     // set up window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -43,7 +46,12 @@
 
     // set root view controller depending on if a user is logged in
     //[PFUser logOut];
+
+    // Configure user broadcast
+    [SBUserBroadcast createPeripheralWithLaunchOptions:launchOptions];
+    
     if ([PFUser currentUser]) {
+
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[RIPGroupChatViewController new]];
 
         self.window.rootViewController = navController;

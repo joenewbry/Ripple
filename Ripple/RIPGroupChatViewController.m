@@ -16,7 +16,6 @@
 #import "RIPPeopleAroundData.h"
 #import "RIPProfileViewController.h"
 
-#import "SBUser.h"
 #import "SBUserBroadcast.h"
 
 @interface RIPGroupChatViewController () <SwipeViewDataSource, SwipeViewDelegate, JSMessagesViewDataSource, JSMessagesViewDelegate>
@@ -48,13 +47,13 @@
 
         // fire up datasource that looks for nearby people using Social Bluetooth framework
         [RIPPeopleAroundData instance].delegate = self;
+        peopleAround.dataSource = [RIPPeopleAroundData instance];
         [[RIPPeopleAroundData instance] startSearchForNearbyPeople];
         [RIPPeopleAroundData instance].swipeView = peopleAround;
 
         // fire up user broadcast using social bluetooth framework
         // once logged in set information to be broadcasted
-        [SBUser createUserWithObjectId:[PFUser currentUser].objectId];
-        [[SBUserBroadcast currentUserBroadcast] peripheralAddUserProfileService];
+#warning should make a better way to check if we should broadcast profiles
 
     }
     return self;

@@ -8,7 +8,6 @@
 
 #import "RIPSaveImage.h"
 #import <Parse/Parse.h>
-#import "SBUser.h"
 #import "SBUserBroadcast.h"
 
 @interface RIPSaveImage ()
