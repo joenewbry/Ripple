@@ -36,19 +36,11 @@
       NSFontAttributeName,
       nil]];
 
-
-
-
     // set up window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
 
-    // set root view controller depending on if a user is logged in
-    //[PFUser logOut];
-
-
-    
     if ([PFUser currentUser]) {
 
         // Configure user broadcast

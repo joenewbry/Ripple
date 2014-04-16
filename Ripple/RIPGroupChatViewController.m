@@ -51,12 +51,15 @@
         [[RIPPeopleAroundData instance] startSearchForNearbyPeople];
         [RIPPeopleAroundData instance].swipeView = peopleAround;
 
-        // fire up user broadcast using social bluetooth framework
-        // once logged in set information to be broadcasted
-#warning should make a better way to check if we should broadcast profiles
-
     }
     return self;
+}
+
+BOOL fromSignUp;
+- (id)initFromSignUp
+{
+    fromSignUp = true;
+    return [self init];
 }
 
 - (void)viewDidLoad
@@ -81,6 +84,7 @@
     self.navigationItem.rightBarButtonItem = settingsItem;
 
     [self setBackgroundColor:[UIColor whiteColor]];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -90,6 +94,16 @@
     // reload nearby people and profile to update if new people are discovered
     // or if user updated profile
     [peopleAround reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    // transition to profile view
+    if (fromSignUp) {
+        fromSignUp = false;
+        [self didPressProfile:self];
+
+    }
 }
 
 #pragma mark - chat data source : REQUIRED

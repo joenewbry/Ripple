@@ -11,4 +11,6 @@
 
 @interface RIPGroupChatViewController : JSMessagesViewController
 
+- (id)initFromSignUp;
+
 @end

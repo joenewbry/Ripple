@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (strong, nonatomic) IBOutlet FUIButton *joinUsButton;
+@property (strong, nonatomic) IBOutlet FUIButton *signInButton;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -33,6 +34,9 @@
 @end
 
 @implementation RIPSignUpViewController
+
+#warning display errors on login and signup to user
+#warning provide password reset option
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,6 +69,15 @@
     [self.joinUsButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.joinUsButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateSelected];
 
+    self.signInButton.buttonColor = [UIColor concreteColor];
+    [self.signInButton setBackgroundColor:[UIColor concreteColor]];
+    self.signInButton.shadowColor = [UIColor asbestosColor];
+    self.signInButton.shadowHeight = 3.0f;
+    self.signInButton.cornerRadius = 6.0f;
+    self.signInButton.titleLabel.font = [UIFont fontWithName:@"ComicNeue-Bold" size:20];
+    [self.signInButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.signInButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateSelected];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,38 +100,56 @@
     }
     // good to go, so create parse user and move to profile view
     else {
-        [self signIn];
+        [self signUp];
     }
 }
+- (IBAction)didPressSignIn:(id)sender {
+    [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error) {
+        if (!error) {
+            [self startBluetooth];
 
-- (void)signIn
+            RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
+
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
+            [self presentViewController:navController animated:NO completion:nil];
+        }
+
+    }];
+
+}
+
+- (void)signUp
 {
     PFUser *newUser = [PFUser user];
     newUser.username = self.usernameTextField.text;
     newUser.password = self.passwordTextField.text;
 
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self startBluetooth];
 
-        // we've create a new user
+            // present profile view with home view as root view in view controller
+            RIPGroupChatViewController *groupChatVC = [[RIPGroupChatViewController alloc] initFromSignUp];
+            NSLog(@"Chat View Created");
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
 
-        // fire up user broadcast using social bluetooth framework
-        // once logged in set information to be broadcasted
-        [SBUserBroadcast createPeripheralWithLaunchOptions:nil];
-        [[SBUserBroadcast currentBroadcast] setUniqueIdentifier:[PFUser currentUser].objectId];
-        [[SBUserBroadcast currentBroadcast] addServices];
-        [[SBUserBroadcast currentBroadcast] startBroadcast];
+            [self presentViewController:navController animated:YES completion:nil];
 
-        RIPProfileViewController *myProfileVC = [[RIPProfileViewController alloc] initWithNibName:@"Profile" bundle:[NSBundle mainBundle]];
-        RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
+        }
 
-        
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
-        RIPProfileViewController *profileVC = [[RIPProfileViewController alloc] initWithNibName:@"Profile" bundle:[NSBundle mainBundle]];
-        [navController presentViewController:profileVC animated:NO completion:nil];
-
-        [self presentViewController:navController animated:NO completion:NULL];
     }];
+}
 
+- (void)startBluetooth
+{
+    // we've create a new user
+
+    // fire up user broadcast using social bluetooth framework
+    // once logged in set information to be broadcasted
+    [SBUserBroadcast createPeripheralWithLaunchOptions:nil];
+    [[SBUserBroadcast currentBroadcast] setUniqueIdentifier:[PFUser currentUser].objectId];
+    [[SBUserBroadcast currentBroadcast] addServices];
+    [[SBUserBroadcast currentBroadcast] startBroadcast];
 }
 
 @end
