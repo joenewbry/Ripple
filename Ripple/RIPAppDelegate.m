@@ -47,10 +47,15 @@
     // set root view controller depending on if a user is logged in
     //[PFUser logOut];
 
-    // Configure user broadcast
-    [SBUserBroadcast createPeripheralWithLaunchOptions:launchOptions];
+
     
     if ([PFUser currentUser]) {
+
+        // Configure user broadcast
+        [SBUserBroadcast createPeripheralWithLaunchOptions:launchOptions];
+        [[SBUserBroadcast currentBroadcast] setUniqueIdentifier:[PFUser currentUser].objectId];
+        [[SBUserBroadcast currentBroadcast] addServices];
+        [[SBUserBroadcast currentBroadcast] startBroadcast];
 
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[RIPGroupChatViewController new]];
 

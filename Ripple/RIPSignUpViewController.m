@@ -103,6 +103,7 @@
 
         // fire up user broadcast using social bluetooth framework
         // once logged in set information to be broadcasted
+        [SBUserBroadcast createPeripheralWithLaunchOptions:nil];
         [[SBUserBroadcast currentBroadcast] setUniqueIdentifier:[PFUser currentUser].objectId];
         [[SBUserBroadcast currentBroadcast] addServices];
         [[SBUserBroadcast currentBroadcast] startBroadcast];
@@ -113,7 +114,7 @@
         
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
         RIPProfileViewController *profileVC = [[RIPProfileViewController alloc] initWithNibName:@"Profile" bundle:[NSBundle mainBundle]];
-        [groupChatVC presentViewController:profileVC animated:NO completion:nil];
+        [navController presentViewController:profileVC animated:NO completion:nil];
 
         [self presentViewController:navController animated:NO completion:NULL];
     }];
