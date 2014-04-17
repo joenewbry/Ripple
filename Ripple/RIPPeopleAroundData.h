@@ -21,5 +21,8 @@
 
 - (void)startSearchForNearbyPeople;
 
+- (NSArray *)peopleNearbyIds;
+- (UIImage *)profileImageForUserId:(NSString *)userId;
+
 @end
 

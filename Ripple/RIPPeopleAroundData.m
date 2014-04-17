@@ -11,11 +11,13 @@
 #import "SBUserDiscovery.h"
 #import "RIPSaveImage.h"
 #import "PFFile+UIImageHelper.h"
+#import "RIPFacesById.h"
 
 @interface RIPPeopleAroundData () <SBUserDiscoveryDelegate>
 
-@property (nonatomic, strong) NSMutableArray *peopleAround;
+@property (nonatomic, strong) NSMutableArray *peopleAroundImages;
 @property (nonatomic, strong) NSMutableSet *discoveredUserObjectIds;
+@property (nonatomic, strong) NSMutableArray *peopleAround;
 
 @end
 
@@ -35,6 +37,7 @@ static RIPPeopleAroundData *instance = nil;
     if (self = [super init]) {
         _peopleAround = [NSMutableArray new];
         _discoveredUserObjectIds = [NSMutableSet new];
+        _peopleAround = [NSMutableArray new];
     }
     return self;
 }
@@ -81,7 +84,7 @@ static RIPPeopleAroundData *instance = nil;
 
     } else
     {
-        [personButton setImage:[self.peopleAround objectAtIndex:index-1] forState:UIControlStateNormal];
+        [personButton setImage:[self.peopleAroundImages objectAtIndex:index-1] forState:UIControlStateNormal];
         [personButton addTarget:self.delegate action:@selector(didPressPerson:) forControlEvents:UIControlEventTouchUpInside];
     }
 
@@ -108,18 +111,28 @@ static RIPPeopleAroundData *instance = nil;
             // need to make sure it's a valid request
             if (objects && [objects count] > 0) {
                 PFUser *discoveredUser = objects[0];
+                [self.peopleAround addObject:discoveredUser];
                 PFFile *thumbnailFile = discoveredUser[@"profilePicture"];
                 [thumbnailFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                    [self.peopleAround addObject:[UIImage imageWithData:data]];
-                    // adjust for 1 additional slot, your profile, and count overstepping index by 1
-                    // +1 -1 = 0
+                    UIImage *img = [UIImage imageWithData:data];
+                    [self.peopleAroundImages addObject:img];
+                    [[RIPFacesById instance] setFaceImg:img forUserId:userID];
                     [self.swipeView reloadData];
-                    NSLog(@"Swipe view should have another person");
-                    //[self.swipeView reloadItemAtIndex:[self.peopleAround count]];
                 }];
             } 
         }];
     }
+}
+
+#pragma mark - external interface
+- (NSArray *)peopleNearbyIds
+{
+    return [self.discoveredUserObjectIds allObjects];
+}
+
+- (UIImage *)profileImageForUserId:(NSString *)userId
+{
+    return [[RIPFacesById instance] getFaceImgForUserId:userId];
 }
 
 @end

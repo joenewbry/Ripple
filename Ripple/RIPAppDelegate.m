@@ -49,7 +49,7 @@
         [[SBUserBroadcast currentBroadcast] addServices];
         [[SBUserBroadcast currentBroadcast] startBroadcast];
 
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[RIPGroupChatViewController new]];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[[RIPGroupChatViewController alloc] init]];
 
         self.window.rootViewController = navController;
     } else {

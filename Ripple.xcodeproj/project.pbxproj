@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B1889F0A1317427DB721A6BB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 830337E9E1DF4B36A6C443A6 /* libPods.a */; };
+		D812F68018FF8A8900025449 /* RIPFacesById.m in Sources */ = {isa = PBXBuildFile; fileRef = D812F67F18FF8A8900025449 /* RIPFacesById.m */; };
 		D81B512A18DE69BF00E73E6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B512918DE69BF00E73E6C /* Foundation.framework */; };
 		D81B512C18DE69BF00E73E6C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B512B18DE69BF00E73E6C /* CoreGraphics.framework */; };
 		D81B512E18DE69BF00E73E6C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B512D18DE69BF00E73E6C /* UIKit.framework */; };
@@ -85,6 +86,8 @@
 /* Begin PBXFileReference section */
 		4C2A7A3C27C54E39B75E3ECC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		830337E9E1DF4B36A6C443A6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D812F67E18FF8A8900025449 /* RIPFacesById.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPFacesById.h; sourceTree = "<group>"; };
+		D812F67F18FF8A8900025449 /* RIPFacesById.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPFacesById.m; sourceTree = "<group>"; };
 		D81B512618DE69BF00E73E6C /* Ripple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81B512918DE69BF00E73E6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D81B512B18DE69BF00E73E6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -377,6 +380,8 @@
 				D8DDCE1A18E1E91100648536 /* RIPPerson.m */,
 				D8EEB98618ECBF8100EA0E45 /* RIPChatData.h */,
 				D8EEB98718ECBF8100EA0E45 /* RIPChatData.m */,
+				D812F67E18FF8A8900025449 /* RIPFacesById.h */,
+				D812F67F18FF8A8900025449 /* RIPFacesById.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D812F68018FF8A8900025449 /* RIPFacesById.m in Sources */,
 				D8DDCDF218E0A2B500648536 /* RIPSignUpViewController.m in Sources */,
 				D8DDCE1718E1E89000648536 /* RIPPeopleAroundData.m in Sources */,
 				D8DDCE0D18E1508900648536 /* RIPInviteContactsTableViewController.m in Sources */,

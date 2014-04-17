@@ -17,8 +17,9 @@
 #import "RIPProfileViewController.h"
 
 #import "SBUserBroadcast.h"
+#import "RIPChatData.h"
 
-@interface RIPGroupChatViewController () <SwipeViewDataSource, SwipeViewDelegate, JSMessagesViewDataSource, JSMessagesViewDelegate>
+@interface RIPGroupChatViewController () <SwipeViewDelegate, JSMessagesViewDelegate, JSMessagesViewDataSource, RIPChatDataDelegate>
 
 @property (nonatomic, strong) SwipeView *peopleAround;
 
@@ -51,6 +52,9 @@
         [[RIPPeopleAroundData instance] startSearchForNearbyPeople];
         [RIPPeopleAroundData instance].swipeView = peopleAround;
 
+        // fire up chat data source
+        [RIPChatData createInstanceWithUserId:[PFUser currentUser].objectId];
+        [RIPChatData currentInstance].delegate = self;
     }
     return self;
 }
@@ -64,12 +68,14 @@ BOOL fromSignUp;
 
 - (void)viewDidLoad
 {
-    // allows chat with users
-    self.dataSource = self;
     self.delegate = self;
+    self.dataSource = self;
 
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    // make sure that datasource and delegate stuff is set up
+
 
     // setup chat
     [[JSBubbleView appearance] setFont:[UIFont fontWithName:@"Avenir-medium" size:16]];
@@ -77,14 +83,13 @@ BOOL fromSignUp;
     self.messageInputView.backgroundColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0];
 
     [self setTitle:@"Ripple"];
-    self.sender = @"Joe Newbry";
+    self.sender = [PFUser currentUser][@"username"];
 
     UIBarButtonItem *settingsItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(didPressSettings:)];
 
     self.navigationItem.rightBarButtonItem = settingsItem;
 
     [self setBackgroundColor:[UIColor whiteColor]];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,6 +99,7 @@ BOOL fromSignUp;
     // reload nearby people and profile to update if new people are discovered
     // or if user updated profile
     [peopleAround reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -106,31 +112,37 @@ BOOL fromSignUp;
     }
 }
 
-#pragma mark - chat data source : REQUIRED
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 10;
-}
-
-- (JSMessage *)messageForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [[JSMessage alloc] initWithText:@"Hi I'm Joe" sender:@"Chad" date:[NSDate distantPast]];
-}
-
-- (UIImageView *)avatarImageViewForRowAtIndexPath:(NSIndexPath *)indexPath sender:(NSString *)sender
-{
-    return nil;
-}
-
 
 #pragma mark - chat delegate : REQUIRED
 - (void)didSendText:(NSString *)text fromSender:(NSString *)sender onDate:(NSDate *)date
 {
     [JSMessageSoundEffect playMessageSentSound];
 
-    [self finishSend];
+    // save message in background
+    PFObject *message = [PFObject objectWithClassName:@"Message"];
+    message[@"message"] = text;
+    message[@"sender"] = [PFUser currentUser];
 
+    if (![sender isEqualToString:[PFUser currentUser][@"username"]]) {
+        NSLog(@"ERRROR MONKIES: Sender name and username aren't the smae, %@, %@", [PFUser currentUser][@"username"], sender);
+    }
+    message[@"senderName"]  = sender;
+    message[@"senderUserId"] = [PFUser currentUser].objectId;
+    [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // create relation from user to message in background
+            PFUser *user = [PFUser currentUser];
+            PFRelation *relation = [user relationForKey:@"messages"];
+            [relation addObject:message];
+            [user saveInBackground];
+        }
+    }];
+
+
+
+    [[RIPChatData currentInstance] addMessage:message];
+
+    [self finishSend];
     [self scrollToBottomAnimated:YES];
 
     // add message to list of messages
@@ -151,6 +163,24 @@ BOOL fromSignUp;
 -(JSMessageInputViewStyle)inputViewStyle
 {
     return JSMessageInputViewStyleFlat;
+}
+
+#pragma mark - chat data source : REQUIRED
+
+// TODO MAKE IS SO THIS GETS CALLED ON RELOAD
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [[RIPChatData currentInstance] messageCount];
+}
+
+- (JSMessage *)messageForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [[RIPChatData currentInstance] messageForRowAtIndexPath:indexPath];
+}
+
+- (UIImageView *)avatarImageViewForRowAtIndexPath:(NSIndexPath *)indexPath sender:(NSString *)sender
+{
+    return [[RIPChatData currentInstance] avatarImageViewForRowAtIndexPath:indexPath sender:sender];
 }
 
 
@@ -192,6 +222,12 @@ BOOL fromSignUp;
 - (BOOL)allowsPanToDismissKeyboard
 {
     return YES;
+}
+
+#pragma mark - Chat Data Source Delegate
+- (void)newMessageReceived
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark - target action
