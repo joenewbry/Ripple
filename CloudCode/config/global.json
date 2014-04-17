@@ -7,5 +7,8 @@
         "_default": {
             "link": "Ripple"
         }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
     }
 }
