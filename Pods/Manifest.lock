@@ -1,0 +1,49 @@
+PODS:
+  - ABContactHelper (0.1)
+  - ADLivelyCollectionView (1.0.0)
+  - CocoaLumberjack (1.6.2)
+  - Facebook-iOS-SDK (3.13.1)
+  - FlatUIKit (1.3)
+  - JSMessagesViewController (4.0.3):
+    - JSQSystemSoundPlayer
+  - JSQSystemSoundPlayer (1.4.0)
+  - Parse (1.2.19):
+    - Facebook-iOS-SDK (~> 3.11)
+  - SocialBluetooth (0.0.1)
+  - SwipeView (1.3)
+  - VLBCameraView (2.0):
+    - CocoaLumberjack (= 1.6.2)
+    - VLBFoundation
+  - VLBFoundation (1.0)
+
+DEPENDENCIES:
+  - ABContactHelper
+  - ADLivelyCollectionView
+  - FlatUIKit
+  - JSMessagesViewController (~> 4.0.0)
+  - Parse
+  - SocialBluetooth (from `https://www.github.com/joenewbry/SocialBluetooth.git`)
+  - SwipeView
+  - VLBCameraView (from `https://github.com/joenewbry/VLBCameraView`)
+
+EXTERNAL SOURCES:
+  SocialBluetooth:
+    :git: https://www.github.com/joenewbry/SocialBluetooth.git
+  VLBCameraView:
+    :git: https://github.com/joenewbry/VLBCameraView
+
+SPEC CHECKSUMS:
+  ABContactHelper: 58d5a7c728313da443474253cb2fb1badf2c41e7
+  ADLivelyCollectionView: da984dfb9cec8f507e59cde0addd0df9ff3e8913
+  CocoaLumberjack: 19dceba2d0360ed383cba983bc3ef0dd089c42a1
+  Facebook-iOS-SDK: 0d121e16437981fabff9379e07bf646bd5ab245c
+  FlatUIKit: 3b32b52bb3c266477709cfe4812ab2c877ae942b
+  JSMessagesViewController: aa0f3f34f70c39ec0a6ded219636b8bd945f5fe2
+  JSQSystemSoundPlayer: 28ccd01a92a0cebc6de6361e8499011b4cb6dab7
+  Parse: 3739f0b211c49115bad96d6b0969b804d4da2f24
+  SocialBluetooth: 45e5f3a144b0e3b0f7ac7c46b96607ea41a32bd0
+  SwipeView: 9533067753d80f15049f70cf903ef7980f79acf2
+  VLBCameraView: 5749f4cd711c2f1a19cbd08019d724bf74d98660
+  VLBFoundation: d63da5c0ff0e877734502fa866197c4243378649
+
+COCOAPODS: 0.31.1

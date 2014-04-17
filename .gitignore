@@ -19,7 +19,6 @@ Ripple.xcodeproj/project.xcworkspace/xcshareddata/
 !Ripple.xcodeproj/*.pbxproj
 
 # Pods config
-Pods
 Podfile.lock
 
 # untracked folders (stuff not needed for app release or that should be kept private)
