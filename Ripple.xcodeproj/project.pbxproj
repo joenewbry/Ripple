@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		B1889F0A1317427DB721A6BB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 830337E9E1DF4B36A6C443A6 /* libPods.a */; };
 		D812F68018FF8A8900025449 /* RIPFacesById.m in Sources */ = {isa = PBXBuildFile; fileRef = D812F67F18FF8A8900025449 /* RIPFacesById.m */; };
+		D812F689190012CF00025449 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D812F683190012CF00025449 /* README.md */; };
+		D812F68A190012CF00025449 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = D812F684190012CF00025449 /* release_notes.md */; };
+		D812F68C1900130800025449 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D812F68B1900130800025449 /* libz.dylib */; };
+		D812F68E19002C1E00025449 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = D812F68D19002C1E00025449 /* Settings.xib */; };
 		D81B512A18DE69BF00E73E6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B512918DE69BF00E73E6C /* Foundation.framework */; };
 		D81B512C18DE69BF00E73E6C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B512B18DE69BF00E73E6C /* CoreGraphics.framework */; };
 		D81B512E18DE69BF00E73E6C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B512D18DE69BF00E73E6C /* UIKit.framework */; };
@@ -22,6 +26,7 @@
 		D81B514D18DE69BF00E73E6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D81B514B18DE69BF00E73E6C /* InfoPlist.strings */; };
 		D81B514F18DE69BF00E73E6C /* RippleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D81B514E18DE69BF00E73E6C /* RippleTests.m */; };
 		D82F25B618EE687C00AC025C /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82F25B518EE687C00AC025C /* SignUp.xib */; };
+		D8A9AF28190074AC00D16B57 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A9AF27190074AC00D16B57 /* libTestFlight.a */; };
 		D8BA38FE18F5C502003E7432 /* AppIcon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = D8BA38E818F5C502003E7432 /* AppIcon29x29.png */; };
 		D8BA38FF18F5C502003E7432 /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8BA38E918F5C502003E7432 /* AppIcon29x29@2x.png */; };
 		D8BA390018F5C502003E7432 /* AppIcon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = D8BA38EA18F5C502003E7432 /* AppIcon40x40.png */; };
@@ -88,6 +93,14 @@
 		830337E9E1DF4B36A6C443A6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D812F67E18FF8A8900025449 /* RIPFacesById.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIPFacesById.h; sourceTree = "<group>"; };
 		D812F67F18FF8A8900025449 /* RIPFacesById.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIPFacesById.m; sourceTree = "<group>"; };
+		D812F682190012CF00025449 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		D812F683190012CF00025449 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		D812F684190012CF00025449 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		D812F685190012CF00025449 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		D812F686190012CF00025449 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		D812F687190012CF00025449 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		D812F68B1900130800025449 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D812F68D19002C1E00025449 /* Settings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
 		D81B512618DE69BF00E73E6C /* Ripple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81B512918DE69BF00E73E6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D81B512B18DE69BF00E73E6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,6 +118,8 @@
 		D81B514C18DE69BF00E73E6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D81B514E18DE69BF00E73E6C /* RippleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RippleTests.m; sourceTree = "<group>"; };
 		D82F25B518EE687C00AC025C /* SignUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUp.xib; sourceTree = "<group>"; };
+		D8A9AF25190073B500D16B57 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = "../../../Downloads/TestFlightSDK3.0.0 (2)/libTestFlight.a"; sourceTree = "<group>"; };
+		D8A9AF27190074AC00D16B57 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = ../../frameworks/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
 		D8BA38E818F5C502003E7432 /* AppIcon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon29x29.png; sourceTree = "<group>"; };
 		D8BA38E918F5C502003E7432 /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
 		D8BA38EA18F5C502003E7432 /* AppIcon40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon40x40.png; sourceTree = "<group>"; };
@@ -174,6 +189,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8A9AF28190074AC00D16B57 /* libTestFlight.a in Frameworks */,
+				D812F68C1900130800025449 /* libz.dylib in Frameworks */,
 				D8EEB99018ECFEDE00EA0E45 /* AVFoundation.framework in Frameworks */,
 				D8EEB98E18ECFED400EA0E45 /* AssetsLibrary.framework in Frameworks */,
 				D8DDCE4318E35B8200648536 /* MessageUI.framework in Frameworks */,
@@ -198,6 +215,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D812F681190012CF00025449 /* TestFlightSDK3.0.0 (2) */ = {
+			isa = PBXGroup;
+			children = (
+				D812F682190012CF00025449 /* libTestFlight.a */,
+				D812F683190012CF00025449 /* README.md */,
+				D812F684190012CF00025449 /* release_notes.md */,
+				D812F685190012CF00025449 /* TestFlight+AsyncLogging.h */,
+				D812F686190012CF00025449 /* TestFlight+ManualSessions.h */,
+				D812F687190012CF00025449 /* TestFlight.h */,
+			);
+			path = "TestFlightSDK3.0.0 (2)";
+			sourceTree = "<group>";
+		};
 		D81B511D18DE69BF00E73E6C = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +251,10 @@
 		D81B512818DE69BF00E73E6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8A9AF27190074AC00D16B57 /* libTestFlight.a */,
+				D8A9AF25190073B500D16B57 /* libTestFlight.a */,
+				D812F68B1900130800025449 /* libz.dylib */,
+				D812F681190012CF00025449 /* TestFlightSDK3.0.0 (2) */,
 				D8EEB98F18ECFEDE00EA0E45 /* AVFoundation.framework */,
 				D8EEB98D18ECFED400EA0E45 /* AssetsLibrary.framework */,
 				D8EEB98B18ECFEC500EA0E45 /* CoreImage.framework */,
@@ -365,6 +399,7 @@
 		D8DDCE1418E1E82700648536 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D812F68D19002C1E00025449 /* Settings.xib */,
 				D8EEB99118ED089900EA0E45 /* Profile.xib */,
 				D82F25B518EE687C00AC025C /* SignUp.xib */,
 			);
@@ -491,6 +526,7 @@
 				D8BA390918F5C502003E7432 /* AppIcon72x72@2x.png in Resources */,
 				D81B513C18DE69BF00E73E6C /* Images.xcassets in Resources */,
 				D8BA38FF18F5C502003E7432 /* AppIcon29x29@2x.png in Resources */,
+				D812F68E19002C1E00025449 /* Settings.xib in Resources */,
 				D8BA390518F5C502003E7432 /* AppIcon57x57@2x.png in Resources */,
 				D8BA390C18F5C502003E7432 /* iTunesArtwork.png in Resources */,
 				D8BA391218F5C502003E7432 /* user.png in Resources */,
@@ -501,6 +537,7 @@
 				D8BA390818F5C502003E7432 /* AppIcon72x72.png in Resources */,
 				D8BA392B18F5C51D003E7432 /* ComicNeue-Regular.ttf in Resources */,
 				D8BA390718F5C502003E7432 /* AppIcon60x60@2x.png in Resources */,
+				D812F68A190012CF00025449 /* release_notes.md in Resources */,
 				D8BA390F18F5C502003E7432 /* RippleLaunchScreen@1136.png in Resources */,
 				D8BA390B18F5C502003E7432 /* AppIcon76x76@2x.png in Resources */,
 				D8BA392818F5C51D003E7432 /* ComicNeue-Light-Oblique.ttf in Resources */,
@@ -509,6 +546,7 @@
 				D8BA392918F5C51D003E7432 /* ComicNeue-Light.ttf in Resources */,
 				D8BA392618F5C51D003E7432 /* ComicNeue-Bold-Oblique.ttf in Resources */,
 				D8BA392718F5C51D003E7432 /* ComicNeue-Bold.ttf in Resources */,
+				D812F689190012CF00025449 /* README.md in Resources */,
 				D8BA392018F5C51D003E7432 /* ComicNeue-Angular-Bold-Oblique.ttf in Resources */,
 				D8BA391118F5C502003E7432 /* plus@2x.png in Resources */,
 				D8BA390E18F5C502003E7432 /* cog.png in Resources */,
@@ -696,9 +734,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Joe Newbry (R3P3E236K7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestFlightSDK3.0.0",
+					"(2)",
+					"$(PROJECT_DIR)/TestFlightSDK3.0.0",
+					"(2)",
+					/Users/joe/Downloads/TestFlightSDK3.0.0,
+					"(2)",
+					/Users/joe/dev/frameworks/TestFlight,
+				);
 				PRODUCT_NAME = Ripple;
 				WRAPPER_EXTENSION = app;
 			};
@@ -710,9 +759,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Joseph  Newbry (2RCTX396VF)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestFlightSDK3.0.0",
+					"(2)",
+					"$(PROJECT_DIR)/TestFlightSDK3.0.0",
+					"(2)",
+					/Users/joe/Downloads/TestFlightSDK3.0.0,
+					"(2)",
+					/Users/joe/dev/frameworks/TestFlight,
+				);
 				PRODUCT_NAME = Ripple;
 				WRAPPER_EXTENSION = app;
 			};

@@ -117,17 +117,19 @@ BOOL fromSignUp;
 - (void)didSendText:(NSString *)text fromSender:(NSString *)sender onDate:(NSDate *)date
 {
     [JSMessageSoundEffect playMessageSentSound];
+    [self finishSend];
+    [self scrollToBottomAnimated:YES];
+
 
     // save message in background
     PFObject *message = [PFObject objectWithClassName:@"Message"];
     message[@"message"] = text;
     message[@"sender"] = [PFUser currentUser];
-
-    if (![sender isEqualToString:[PFUser currentUser][@"username"]]) {
-        NSLog(@"ERRROR MONKIES: Sender name and username aren't the smae, %@, %@", [PFUser currentUser][@"username"], sender);
-    }
     message[@"senderName"]  = sender;
     message[@"senderUserId"] = [PFUser currentUser].objectId;
+    message[@"recipients"] = [[RIPPeopleAroundData instance] peopleNearbyIds];
+    [[RIPChatData currentInstance] addMessage:message];
+
     [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             // create relation from user to message in background
@@ -138,20 +140,16 @@ BOOL fromSignUp;
         }
     }];
 
-
-
-    [[RIPChatData currentInstance] addMessage:message];
-
-    [self finishSend];
-    [self scrollToBottomAnimated:YES];
-
     // add message to list of messages
 }
 
 - (JSBubbleMessageType)messageTypeForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    // add class that will say what type of message it is
+    if ([[RIPChatData currentInstance] isSenderSelfForRowAtIndexPath:indexPath]) {
+        return JSBubbleMessageTypeOutgoing;
+    }
+
     return JSBubbleMessageTypeIncoming;
 }
 
@@ -237,7 +235,7 @@ BOOL fromSignUp;
     
 }
 
-- (void)didPressInvite:(id)sender
+- (void)didPressAdd:(id)sender
 {
     RIPInviteContactsTableViewController *inviteVC = [[RIPInviteContactsTableViewController alloc] init];
     [self.navigationController pushViewController:inviteVC animated:YES];
@@ -253,7 +251,7 @@ BOOL fromSignUp;
 
 - (void)didPressSettings:(id)sender
 {
-    RIPSettingsViewController *settingsVC = [[RIPSettingsViewController alloc] init];
+    RIPSettingsViewController *settingsVC = [[RIPSettingsViewController alloc] initWithNibName:@"Settings" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:settingsVC animated:NO];
 }
 

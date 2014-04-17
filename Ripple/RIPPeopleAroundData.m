@@ -55,7 +55,8 @@ static RIPPeopleAroundData *instance = nil;
 #pragma mark - swipe view data source
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
-    return [self.peopleAround count] + 1;
+    // for first and last item
+    return [self.peopleAround count] + 2;
 
     // todo create singleton instance with that
     // responds to count, image, name requests
@@ -74,15 +75,23 @@ static RIPPeopleAroundData *instance = nil;
 //    }
     if (index == 0) {
 
-        PFFile *profileImage = [PFUser currentUser][@"profilePicture"];
-        NSData *imgData = [profileImage getData];
-
+        //PFFile *profileImage = [PFUser currentUser][@"profilePicture"];
+        //NSData *imgData = [profileImage getData];
+        UIImage *profileImage = [[RIPFacesById instance] getFaceImgForUserId:[PFUser currentUser].objectId];
         //[profileImage imageFromFileWithPlaceholderImage:[UIImage imageNamed:@"user"]];
-        [personButton setImage:[UIImage imageWithData:imgData] forState:UIControlStateNormal];
+        [personButton setImage:profileImage forState:UIControlStateNormal];
 
         [personButton addTarget:self.delegate action:@selector(didPressProfile:) forControlEvents:UIControlEventTouchUpInside];
 
-    } else
+    }
+
+    else if (index == [self.peopleAround count] + 1)
+    {
+        [personButton setImage:[UIImage imageNamed:@"plus"] forState:UIControlStateNormal];
+        [personButton addTarget:self.delegate action:@selector(didPressAdd:) forControlEvents:UIControlEventTouchUpInside];
+    }
+
+    else
     {
         [personButton setImage:[self.peopleAroundImages objectAtIndex:index-1] forState:UIControlStateNormal];
         [personButton addTarget:self.delegate action:@selector(didPressPerson:) forControlEvents:UIControlEventTouchUpInside];

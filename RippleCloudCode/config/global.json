@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "Ripple": {
+            "applicationId": "zDKQTO7Woa8CxWyvJIJ3kqCWJiBNQLVevHd4NND1", 
+            "masterKey": "6J6Rx8Zy8eukJHtwveDHfn1fbVDZ8Nr8pYW7UqRb"
+        }, 
+        "_default": {
+            "link": "Ripple"
+        }
+    }
+}

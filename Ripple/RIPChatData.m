@@ -111,6 +111,13 @@ static RIPChatData *instance = nil;
     return imgView;
 }
 
+- (BOOL)isSenderSelfForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *senderName = self.chatMessages[indexPath.row][@"senderName"];
+    NSString *userName = [PFUser currentUser][@"username"];
+    return [senderName isEqualToString:userName];
+}
+
 #pragma mark - Helper methods
 - (void)reloadMessages
 {

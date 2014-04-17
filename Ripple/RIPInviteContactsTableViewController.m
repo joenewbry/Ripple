@@ -193,7 +193,7 @@
         [warningAlert show];
         return;
     }
-    NSString *message = [NSString stringWithFormat:@"Check out Ripple! The easiest way to chat with people nearby"];
+    NSString *message = [NSString stringWithFormat:@"Be a Beta tester for Ripple! Click on http://tflig.ht/1eDpSfv to join!"];
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
     [messageController setRecipients:[self.selectedContacts allObjects]];
@@ -208,22 +208,29 @@
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
     switch (result) {
-        case MessageComposeResultCancelled:
+        { case MessageComposeResultCancelled:
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }];
             break;
+        }
         case MessageComposeResultFailed:
         {
             UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Message failed to send!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [warningAlert show];
             break;
         }
-        case MessageComposeResultSent:
+        { case MessageComposeResultSent:
             [self.tabBarController setSelectedIndex:1];
-            [self performSegueWithIdentifier:@"Submitted Assignments" sender:self];
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }];
             break;
+        }
         default:
             break;
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

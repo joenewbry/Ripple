@@ -11,11 +11,14 @@
 #import "RIPGroupChatViewController.h"
 #import "RIPSignUpViewController.h"
 #import "SBUserBroadcast.h"
+#import "TestFlight.h"
 
 @implementation RIPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // configure TestFlight
+    [TestFlight takeOff:@"2f26a5b7-e175-4d86-b589-9cdc703529dd"];
 
     // configure Parse
     [Parse setApplicationId:@"zDKQTO7Woa8CxWyvJIJ3kqCWJiBNQLVevHd4NND1"

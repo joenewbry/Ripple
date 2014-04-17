@@ -10,25 +10,34 @@
 #import <Parse/Parse.h>
 #import "RIPAppDelegate.h"
 #import "RIPSignUpViewController.h"
+#import "FUIButton.h"
+#import <FlatUIKit/UIColor+FlatUI.h> // flat colors
 
 @interface RIPSettingsViewController ()
+@property (strong, nonatomic) IBOutlet FUIButton *logOutButton;
+@property (strong, nonatomic) IBOutlet UILabel *logOutText;
 
 @end
 
 @implementation RIPSettingsViewController
 
-- (id)init
+@synthesize logOutButton;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if (self = [super init]) {
-        UIButton *logOutButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 200, 280, 50)];
-        logOutButton.backgroundColor = [UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0];
-        [logOutButton.layer setCornerRadius:5.0];
-        [logOutButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [logOutButton.titleLabel setTextColor:[UIColor whiteColor]];
-        [logOutButton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Black" size:20]];
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        // configure button
+        [logOutButton setBackgroundColor:[UIColor alizarinColor]];
+        logOutButton.shadowColor = [UIColor pomegranateColor];
+        logOutButton.shadowHeight = 3.0f;
+        logOutButton.cornerRadius = 6.0f;
+        logOutButton.titleLabel.font = [UIFont fontWithName:@"ComicNeue-Bold" size:20];
+        [logOutButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+        [logOutButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateSelected];
         [logOutButton setTitle:@"LOG OUT" forState:UIControlStateNormal];
-        [logOutButton addTarget:self action:@selector(didPressLogOut:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:logOutButton];
+
+        // configure logout text
+        [self.logOutText setFont:[UIFont fontWithName:@"ComicNeue-Thin" size:20]];
 
     }
     return self;
@@ -47,7 +56,7 @@
 }
 
 #pragma mark - target action
-- (void)didPressLogOut:(id)sender
+- (IBAction)didPressLogOut:(id)sender
 {
     [PFUser logOut];
 //    [self.navigationController popToRootViewControllerAnimated:NO];
