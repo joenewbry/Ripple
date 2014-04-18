@@ -23,6 +23,8 @@
 
 - (NSArray *)peopleNearbyIds;
 - (UIImage *)profileImageForUserId:(NSString *)userId;
+- (NSArray *)peopleNearby;
+- (void)logOut;
 
 @end
 

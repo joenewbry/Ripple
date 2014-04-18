@@ -15,6 +15,7 @@
 #import <FUIButton.h> // buttons
 #import <UIFont+FlatUI.h> // custom font
 #import <FlatUIKit/UIColor+FlatUI.h> // flat colors
+#import "RIPConstants.h"
 
 @interface RIPSignUpViewController ()
 
@@ -90,31 +91,14 @@
 #pragma mark - target action
 - (IBAction)didPressJoinUs:(id)sender {
 
-    // no username let the user know to input a user name
-    if ([self.usernameTextField.text length] == 0) {
-        [self.usernameTextField setPlaceholder:@">> Username <<"];
-    }
-    // no password. let user know to input password
-    else if ([self.passwordTextField.text length] == 0) {
-        [self.passwordTextField setPlaceholder:@">> Password <<"];
-    }
+    [self checkUsernameAndPassword];
     // good to go, so create parse user and move to profile view
-    else {
-        [self signUp];
-    }
+    [self signUp];
 }
 - (IBAction)didPressSignIn:(id)sender {
-    [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error) {
-        if (!error) {
-            [self startBluetooth];
+    [self checkUsernameAndPassword];
 
-            RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
-
-            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
-            [self presentViewController:navController animated:NO completion:nil];
-        }
-
-    }];
+    [self signIn];
 
 }
 
@@ -126,7 +110,8 @@
 
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            [self startBluetooth];
+            [self startBluetooth:newUser];
+            [self registerUserToPFInstallationForPush:newUser];
 
             // present profile view with home view as root view in view controller
             RIPGroupChatViewController *groupChatVC = [[RIPGroupChatViewController alloc] initFromSignUp];
@@ -140,16 +125,62 @@
     }];
 }
 
-- (void)startBluetooth
+- (void)signIn
+{
+    [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error) {
+        if (!error) {
+            [self startBluetooth:[PFUser currentUser]];
+            [self registerUserToPFInstallationForPush];
+
+            RIPGroupChatViewController *groupChatVC = [RIPGroupChatViewController new];
+
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupChatVC];
+            [self presentViewController:navController animated:NO completion:nil];
+        }
+        
+    }];
+}
+
+- (void)startBluetooth:(PFUser *)newUser
 {
     // we've create a new user
 
     // fire up user broadcast using social bluetooth framework
     // once logged in set information to be broadcasted
     [SBUserBroadcast createPeripheralWithLaunchOptions:nil];
-    [[SBUserBroadcast currentBroadcast] setUniqueIdentifier:[PFUser currentUser].objectId];
+    [[SBUserBroadcast currentBroadcast] setUniqueIdentifier:newUser.objectId];
     [[SBUserBroadcast currentBroadcast] addServices];
     [[SBUserBroadcast currentBroadcast] startBroadcast];
+}
+
+- (void)registerUserToPFInstallationForPush:(PFUser *)newUser
+{
+    NSString *privateChannelName = [NSString stringWithFormat:@"user_%@", newUser.objectId];
+    [[PFInstallation currentInstallation] setObject:newUser  forKey:kInstallationUserKey];
+    [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kInstallationChannelsKey];
+    [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) NSLog(@"Error for PFINstallation is: %@", [error localizedDescription]);
+        NSLog(@"Installation is");
+    }];
+    [newUser setObject:privateChannelName forKey:kUserPrivateChannelKey];
+    [newUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) NSLog(@"Error saving user is: %@", [error localizedDescription]);
+        NSLog(@"private channel for user saved");
+    }];
+}
+
+- (void)checkUsernameAndPassword
+{
+    // no username let the user know to input a user name
+    if ([self.usernameTextField.text length] == 0) {
+        [self.usernameTextField setPlaceholder:@">> Username <<"];
+        return;
+    }
+    // no password. let user know to input password
+    else if ([self.passwordTextField.text length] == 0) {
+        [self.passwordTextField setPlaceholder:@">> Password <<"];
+        return;
+    }
 }
 
 @end

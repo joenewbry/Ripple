@@ -13,4 +13,7 @@
 
 - (id)initFromSignUp;
 
+// so RIPPeopleAroundData call tell chat to reload
+- (void)reloadSwipeViewIndex:(NSUInteger)index;
+
 @end

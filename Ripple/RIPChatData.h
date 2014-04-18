@@ -30,5 +30,6 @@
 - (JSMessage *)messageForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (UIImageView *)avatarImageViewForRowAtIndexPath:(NSIndexPath *)indexPath sender:(NSString *)sender;
 - (BOOL)isSenderSelfForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)logOut;
 
 @end

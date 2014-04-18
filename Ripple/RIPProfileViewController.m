@@ -9,6 +9,7 @@
 #import "RIPProfileViewController.h"
 #import <Parse/Parse.h>
 #import <VLBCameraView.h>
+#import "RIPFacesById.h"
 
 @interface RIPProfileViewController () <VLBCameraViewDelegate, UITextFieldDelegate>
 
@@ -114,6 +115,8 @@
     self.profilePicture.image = image;
 
     UIImage *rotatedImg = [self rotateUIImage:image clockwise:YES];
+
+    [[RIPFacesById instance] setFaceImg:rotatedImg forUserId:[PFUser currentUser].objectId];
 
     NSData *pictureData = UIImagePNGRepresentation(rotatedImg);
 

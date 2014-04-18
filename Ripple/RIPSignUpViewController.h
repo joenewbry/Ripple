@@ -10,4 +10,6 @@
 
 @interface RIPSignUpViewController : UIViewController
 
+- (void)registerUserToPFInstallationForPush;
+
 @end

@@ -127,7 +127,7 @@ BOOL fromSignUp;
     message[@"sender"] = [PFUser currentUser];
     message[@"senderName"]  = sender;
     message[@"senderUserId"] = [PFUser currentUser].objectId;
-    message[@"recipients"] = [[RIPPeopleAroundData instance] peopleNearbyIds];
+    if ([[RIPPeopleAroundData instance] peopleNearby]) message[@"recipients"] = [[RIPPeopleAroundData instance] peopleNearby];
     [[RIPChatData currentInstance] addMessage:message];
 
     [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -226,6 +226,12 @@ BOOL fromSignUp;
 - (void)newMessageReceived
 {
     [self.tableView reloadData];
+}
+
+#pragma mark - People ARound Data (Should be DELEGATE!!!)
+- (void)reloadSwipeViewIndex:(NSUInteger)index
+{
+    [self.peopleAround reloadItemAtIndex:index];
 }
 
 #pragma mark - target action

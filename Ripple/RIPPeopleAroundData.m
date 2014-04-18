@@ -35,7 +35,7 @@ static RIPPeopleAroundData *instance = nil;
 - (id)init
 {
     if (self = [super init]) {
-        _peopleAround = [NSMutableArray new];
+        _peopleAroundImages = [NSMutableArray new];
         _discoveredUserObjectIds = [NSMutableSet new];
         _peopleAround = [NSMutableArray new];
     }
@@ -77,6 +77,14 @@ static RIPPeopleAroundData *instance = nil;
 
         //PFFile *profileImage = [PFUser currentUser][@"profilePicture"];
         //NSData *imgData = [profileImage getData];
+
+        if (![[RIPFacesById instance] getFaceImgForUserId:[PFUser currentUser].objectId]) {
+            PFFile *profileImg = [PFUser currentUser][@"profilePicture"];
+            [profileImg getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                [[RIPFacesById instance] setFaceImg:[UIImage imageWithData:data] forUserId:[PFUser currentUser].objectId];
+                [self.delegate reloadSwipeViewIndex:index];
+            }];
+        }
         UIImage *profileImage = [[RIPFacesById instance] getFaceImgForUserId:[PFUser currentUser].objectId];
         //[profileImage imageFromFileWithPlaceholderImage:[UIImage imageNamed:@"user"]];
         [personButton setImage:profileImage forState:UIControlStateNormal];
@@ -112,6 +120,7 @@ static RIPPeopleAroundData *instance = nil;
 
 - (void)didReceiveUserID:(NSString *)userID
 {
+    NSLog(@"Got user ID: %@", userID);
     if (![self.discoveredUserObjectIds containsObject:userID]) {
         [self.discoveredUserObjectIds addObject:userID]; // store so we don't make a second request
         PFQuery *queryForUser = [PFQuery queryWithClassName:@"_User"];
@@ -119,10 +128,12 @@ static RIPPeopleAroundData *instance = nil;
         [queryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             // need to make sure it's a valid request
             if (objects && [objects count] > 0) {
+                NSLog(@"Found nearby user");
                 PFUser *discoveredUser = objects[0];
                 [self.peopleAround addObject:discoveredUser];
                 PFFile *thumbnailFile = discoveredUser[@"profilePicture"];
                 [thumbnailFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    NSLog(@"Found face for user");
                     UIImage *img = [UIImage imageWithData:data];
                     [self.peopleAroundImages addObject:img];
                     [[RIPFacesById instance] setFaceImg:img forUserId:userID];
@@ -139,9 +150,21 @@ static RIPPeopleAroundData *instance = nil;
     return [self.discoveredUserObjectIds allObjects];
 }
 
+- (NSArray *)peopleNearby
+{
+    return self.peopleAround;
+}
+
 - (UIImage *)profileImageForUserId:(NSString *)userId
 {
     return [[RIPFacesById instance] getFaceImgForUserId:userId];
+}
+
+- (void)logOut
+{
+    self.peopleAround = nil;
+    self.peopleAroundImages = nil;
+    self.discoveredUserObjectIds = nil;
 }
 
 @end

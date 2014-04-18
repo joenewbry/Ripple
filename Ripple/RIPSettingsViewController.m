@@ -13,6 +13,13 @@
 #import "FUIButton.h"
 #import <FlatUIKit/UIColor+FlatUI.h> // flat colors
 
+// to reset all data sources
+#import "RIPChatData.h"
+#import "RIPPeopleAroundData.h"
+
+// to stop sharing profile
+#import <SBUserBroadcast.h>
+
 @interface RIPSettingsViewController ()
 @property (strong, nonatomic) IBOutlet FUIButton *logOutButton;
 @property (strong, nonatomic) IBOutlet UILabel *logOutText;
@@ -59,8 +66,9 @@
 - (IBAction)didPressLogOut:(id)sender
 {
     [PFUser logOut];
-//    [self.navigationController popToRootViewControllerAnimated:NO];
-//    [[self.navigationController presentedViewController] dismissViewControllerAnimated:NO completion:NULL];
+    [[RIPPeopleAroundData instance] logOut];
+    [[RIPChatData currentInstance] logOut];
+    [[SBUserBroadcast currentBroadcast] endBroadcast];
 
     RIPSignUpViewController *signUpVC = [[RIPSignUpViewController alloc] initWithNibName:@"SignUp" bundle:[NSBundle mainBundle]];
     RIPAppDelegate *app = [[UIApplication sharedApplication] delegate];

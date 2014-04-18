@@ -12,18 +12,28 @@
 #import "RIPSignUpViewController.h"
 #import "SBUserBroadcast.h"
 #import "TestFlight.h"
+#import "RIPConstants.h"
 
 @implementation RIPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     // configure TestFlight
     [TestFlight takeOff:@"2f26a5b7-e175-4d86-b589-9cdc703529dd"];
 
     // configure Parse
     [Parse setApplicationId:@"zDKQTO7Woa8CxWyvJIJ3kqCWJiBNQLVevHd4NND1"
                   clientKey:@"kbjzFOHawHbdT30LefPfaNMn7oR9MCmsHqUaEXRA"];
-    [PFFacebookUtils initializeFacebook];
+
+    // for now reset chat icon number to 0
+
+
+    // ask for push notification access
+    [application registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge |
+     UIRemoteNotificationTypeAlert |
+     UIRemoteNotificationTypeSound)];
 
     // configure navigation bar left and right items
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:59/255.0 green:137.0/255.0 blue:233.0/255.0 alpha:1.0]];
@@ -43,14 +53,18 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-
-    if ([PFUser currentUser]) {
+    
+    if (false) {
 
         // Configure user broadcast
         [SBUserBroadcast createPeripheralWithLaunchOptions:launchOptions];
         [[SBUserBroadcast currentBroadcast] setUniqueIdentifier:[PFUser currentUser].objectId];
         [[SBUserBroadcast currentBroadcast] addServices];
         [[SBUserBroadcast currentBroadcast] startBroadcast];
+
+        // Configure INstallation
+        // TODO: maybe remove this
+        
 
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[[RIPGroupChatViewController alloc] init]];
 
@@ -62,6 +76,43 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+#pragma mark - Push notifications
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [PFPush storeDeviceToken:deviceToken];
+
+    // sets app icon badge to 0
+    if (application.applicationIconBadgeNumber != 0) {
+        application.applicationIconBadgeNumber = 0;
+        [[PFInstallation currentInstallation] saveEventually];
+    }
+
+    [[PFInstallation currentInstallation] addUniqueObject:@"" forKey:kInstallationChannelsKey];
+
+    if ([PFUser currentUser]) {
+        NSString *privateChannelName = [[PFUser currentUser] objectForKey:kUserPrivateChannelKey];
+        if (privateChannelName && privateChannelName.length > 0){
+            [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kInstallationChannelsKey];
+        }
+    }
+
+    [[PFInstallation currentInstallation] saveEventually];
+}
+
+
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    NSLog(@"Error in registration. Error: %@", err);
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

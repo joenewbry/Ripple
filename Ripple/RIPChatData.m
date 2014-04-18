@@ -39,6 +39,12 @@ static RIPChatData *instance = nil;
     return instance;
 }
 
+- (NSMutableArray *)chatMessages
+{
+    if (!_chatMessages) _chatMessages = [NSMutableArray new];
+    return _chatMessages;
+}
+
 
 - (id)initWithUserId:(NSString *)userId
 {
@@ -63,7 +69,7 @@ static RIPChatData *instance = nil;
             NSLog(@"Error fetching messages");
         } else {
             // object has all the messages
-            [self.chatMessages addObjectsFromArray:objects];
+            if (objects && [objects count] > 0) [self.chatMessages addObjectsFromArray:objects];
             [self reloadMessages];
 
             // get images for the chatters
@@ -116,6 +122,12 @@ static RIPChatData *instance = nil;
     NSString *senderName = self.chatMessages[indexPath.row][@"senderName"];
     NSString *userName = [PFUser currentUser][@"username"];
     return [senderName isEqualToString:userName];
+}
+
+- (void)logOut
+{
+    self.userId = nil;
+    self.chatMessages = nil;
 }
 
 #pragma mark - Helper methods
