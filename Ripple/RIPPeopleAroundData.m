@@ -31,6 +31,26 @@ static RIPPeopleAroundData *instance = nil;
     return instance;
 }
 
+#pragma marks - getters
+
+- (NSMutableArray *)peopleAround
+{
+    if (!_peopleAround) _peopleAround = [NSMutableArray new];
+    return _peopleAround;
+}
+
+- (NSMutableSet *)discoveredUserObjectIds
+{
+    if (!_discoveredUserObjectIds) _discoveredUserObjectIds = [NSMutableSet new];
+    return _discoveredUserObjectIds;
+}
+
+- (NSMutableArray *)peopleAroundImages
+{
+    if (!_peopleAroundImages) _peopleAroundImages = [NSMutableArray new];
+    return _peopleAroundImages;
+}
+
 // start searching for users
 - (id)init
 {
@@ -56,7 +76,7 @@ static RIPPeopleAroundData *instance = nil;
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
     // for first and last item
-    return [self.peopleAround count] + 2;
+    return [self.peopleAroundImages count] + 2;
 
     // todo create singleton instance with that
     // responds to count, image, name requests
@@ -93,7 +113,8 @@ static RIPPeopleAroundData *instance = nil;
 
     }
 
-    else if (index == [self.peopleAround count] + 1)
+    // todo, make sure race conditions are avoided on data check
+    else if (index == [self.peopleAroundImages count] + 1)
     {
         [personButton setImage:[UIImage imageNamed:@"plus"] forState:UIControlStateNormal];
         [personButton addTarget:self.delegate action:@selector(didPressAdd:) forControlEvents:UIControlEventTouchUpInside];

@@ -17,3 +17,4 @@ NSString * const kUserPrivateChannelKey = @"channel";
 NSString * const kInstallationChannelsKey = @"channels";
 NSString * const kInstallationUserKey = @"user";
 NSString * const kPushPayloadFromUserObjectIDKey = @"fu";
+NSString * const kInstallationUserObjectIdKey = @"userObjectId";

@@ -156,16 +156,22 @@
 - (void)registerUserToPFInstallationForPush:(PFUser *)newUser
 {
     NSString *privateChannelName = [NSString stringWithFormat:@"user_%@", newUser.objectId];
-    [[PFInstallation currentInstallation] setObject:newUser  forKey:kInstallationUserKey];
-    [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kInstallationChannelsKey];
-    [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error) NSLog(@"Error for PFINstallation is: %@", [error localizedDescription]);
-        NSLog(@"Installation is");
-    }];
     [newUser setObject:privateChannelName forKey:kUserPrivateChannelKey];
     [newUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) NSLog(@"Error saving user is: %@", [error localizedDescription]);
-        NSLog(@"private channel for user saved");
+
+        if (succeeded) {
+            NSLog(@"private channel for user saved");
+
+
+            [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kInstallationUserKey];
+                [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kInstallationChannelsKey];
+                [[PFInstallation currentInstallation] save];
+            }];
+
+        }
+
     }];
 }
 

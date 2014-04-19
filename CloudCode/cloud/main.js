@@ -6,18 +6,20 @@ Parse.Cloud.define("hello", function(request, response) {
 });
 
 // makes sure all installations point to current user
-Parse.Cloud.beforeSave(Parse.Installation, function(request, response) {
-	Parse.Cloud.useMasterKey();
-	if (request.User) {
-		// TODO, when changing iOS app to use const strings change sting to user
-		request.object.set('user', request.user);
+// Parse.Cloud.beforeSave(Parse.Installation, function(request, response) {
+// 	Parse.Cloud.useMasterKey();
+// 	if (request.user) {
+// 		alert('user set')
+// 		// TODO, when changing iOS app to use const strings change sting to user
+// 		request.object.set('user', request.user);
 
-	} else {
-		// TODO, when changing iOS app to use const strings change sting to user
-		request.object.unset('user');
-	}
-	response.success();
-});
+// 	} else {
+// 		alert('user unset');
+// 		// TODO, when changing iOS app to use const strings change sting to user
+// 		request.object.unset('user');
+// 	}
+// 	response.success();
+// });
 
 // make sure that push notification is sent out after message is saved
 Parse.Cloud.afterSave('Message', function(request, response) {

@@ -17,4 +17,5 @@ extern NSString *const kUserPrivateChannelKey;
 extern NSString *const kInstallationChannelsKey;
 extern NSString *const kInstallationUserKey;
 extern NSString *const kPushPayloadFromUserObjectIDKey;
+extern NSString * const kInstallationUserObjectIdKey;
 
