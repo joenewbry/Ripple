@@ -17,17 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>FacebookAppID</key>
-	<string>269499293225414</string>
-	<key>FacebookDisplayName</key>
-	<string>Ripple</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -37,21 +29,14 @@
 			</array>
 		</dict>
 	</array>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<key>CFBundleVersion</key>
+	<string>355</string>
+	<key>FacebookAppID</key>
+	<string>269499293225414</string>
+	<key>FacebookDisplayName</key>
+	<string>Ripple</string>
+	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>bluetooth-peripheral</string>
-	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ComicNeue-Angular-Bold-Oblique.ttf</string>
@@ -66,5 +51,20 @@
 		<string>ComicNeue-Regular-Oblique.ttf</string>
 		<string>ComicNeue-Regular.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-peripheral</string>
+	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

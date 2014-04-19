@@ -35,10 +35,13 @@ Parse.Cloud.afterSave('Message', function(request, response) {
 			Parse.Push.send({
 				where: query,
 				data : {
-					alert: 'Message from ' + message.get('senderName'),
+					alert: message.get('message'),
 					badge: 'Increment',
 					p: 'm',
+					pid: message.id,
 					fu: message.get('senderName'),
+					fuid: message.get('senderUserId'),
+
 				},
 			});
 		}

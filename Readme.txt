@@ -1,11 +1,16 @@
 Ripple - A local social network
 
 Priority List
-1. Get PFInstallations online + Request to send push notifications
-2. Get push notifications working
+1. Fix up forked (image flips) camera github thing and submit pull
+2. Hide chat after sending a message
+3. Add empty image for nearby user without photo yet, change implementation to show that
+4. Make sure image is being shrunk down to size before being saved to parse 
 3. Make nearby people show and hide
+4. Make chat bubbles different colors depending on who sends them
+5. Animation for new user appearing
 4. Crush Bugs
-5. Look at PFInstallation class documentation
+5. Implement test to insure form input is working and data models are reset on log out
+6. Increment Build Every Build
 
 A few things todo:
 Make nearby people hide on scroll up and show up on scroll down

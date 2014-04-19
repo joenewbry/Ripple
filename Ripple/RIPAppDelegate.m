@@ -13,6 +13,7 @@
 #import "SBUserBroadcast.h"
 #import "TestFlight.h"
 #import "RIPConstants.h"
+#import "RIPChatData.h"
 
 @implementation RIPAppDelegate
 
@@ -107,7 +108,17 @@
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+    PFQuery *messageQuery = [PFQuery queryWithClassName:@"Message"];
+    NSString *pushType = userInfo[@"p"];
+
+    // if push is a message
+    if ([pushType isEqualToString:@"m"]) {
+        [messageQuery whereKey:@"objectId" equalTo:userInfo[@"pid"]];
+        [messageQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            [[RIPChatData currentInstance] addMessage:object];
+        }];
+
+    }
 }
 
 @end
