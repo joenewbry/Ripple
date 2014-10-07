@@ -74,27 +74,28 @@
     signUpButton.enabled = false;
 
     // log in with facebook
-    NSArray *permissionsArray = @[@"user_about_me"];
-    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-        // transition to navigation controller with chat view as root
-        if (!error){
-            FBRequest *request = [FBRequest requestForMe];
-            [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                if (!error){
-                    NSDictionary *userData = (NSDictionary *)result;
-                    [PFUser currentUser].username = userData[@"name"];
-                    NSString *facebookID = userData[@"id"];
-                    NSString *pictureURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
-                    [PFUser currentUser][@"pictureURL"] = pictureURL;
-
-                    [self saveImageInBackground:[NSURL URLWithString:pictureURL]];
-                }
-            }];
-
-
-        }
-
-    }];
+//    NSArray *permissionsArray = @[@"user_about_me"];
+//    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+//        // transition to navigation controller with chat view as root
+//        if (!error){
+//            FBRequest *request = [FBRequest requestForMe];
+//            [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+//                if (!error){
+//                    NSDictionary *userData = (NSDictionary *)result;
+//                    [PFUser currentUser].username = userData[@"name"];
+//                    NSString *facebookID = userData[@"id"];
+//                    NSString *pictureURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
+//                    [PFUser currentUser][@"pictureURL"] = pictureURL;
+//
+//                    [self saveImageInBackground:[NSURL URLWithString:pictureURL]];
+//                }
+//            }];
+//
+//
+//        }
+//
+//    }];
+    [self signIn];
 }
 
 
